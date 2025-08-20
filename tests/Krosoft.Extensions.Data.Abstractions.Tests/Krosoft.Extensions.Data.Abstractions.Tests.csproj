@@ -2,8 +2,7 @@
 	<ItemGroup>
 		<ProjectReference Include="..\..\samples\Krosoft.Extensions.Samples.Library\Krosoft.Extensions.Samples.Library.csproj" />
 		<ProjectReference Include="..\..\src\Krosoft.Extensions.Data.Abstractions\Krosoft.Extensions.Data.Abstractions.csproj" />
-		<ProjectReference Include="..\..\src\Krosoft.Extensions.Testing\Krosoft.Extensions.Testing.csproj" />
-	</ItemGroup>
+		</ItemGroup>
 	<ItemGroup>
 		<None Update="appsettings.json">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

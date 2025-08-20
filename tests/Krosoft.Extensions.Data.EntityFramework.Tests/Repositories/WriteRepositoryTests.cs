@@ -4,7 +4,8 @@ using Krosoft.Extensions.Data.Abstractions.Interfaces;
 using Krosoft.Extensions.Data.EntityFramework.Extensions;
 using Krosoft.Extensions.Data.EntityFramework.InMemory.Extensions;
 using Krosoft.Extensions.Data.EntityFramework.Repositories;
-using Krosoft.Extensions.Samples.DotNet8.Api.Data;
+
+using Krosoft.Extensions.Samples.DotNet9.Api.Data;
 using Krosoft.Extensions.Samples.Library.Models.Entities;
 using Krosoft.Extensions.Testing;
 using Krosoft.Extensions.Testing.Data.EntityFramework.Extensions;

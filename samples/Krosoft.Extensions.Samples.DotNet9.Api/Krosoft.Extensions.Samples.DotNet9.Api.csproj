@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+	<PropertyGroup>
+		<TargetFramework>net9.0</TargetFramework>
+		<GenerateDocumentationFile>True</GenerateDocumentationFile>
+		<NoWarn>$(NoWarn);1591</NoWarn>
+		<DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+		<DockerfileTag>krosoft-extensions.samples.dotnet9.api</DockerfileTag>
+		<DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="Krosoft.Extensions.Cqrs.Behaviors" Version="2025.8.20.1762" />
+		<PackageReference Include="Krosoft.Extensions.Cqrs.Behaviors.Validations" Version="2025.5.6.1484" />
+		<PackageReference Include="Krosoft.Extensions.Jobs.Hangfire" Version="2025.8.20.1714" />
+		<PackageReference Include="Krosoft.Extensions.Options" Version="2025.4.30.1411" />
+		<PackageReference Include="Krosoft.Extensions.WebApi" Version="2025.5.13.1505" />
+ 		<PackageReference Include="Krosoft.Extensions.WebApi.Swagger.HealthChecks" Version="2025.5.13.1506" />
+	 		 	<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.21.0" />
+		<PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore" Version="9.0.8" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.8">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+	</ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\..\src\Krosoft.Extensions.Data.EntityFramework.Sqlite\Krosoft.Extensions.Data.EntityFramework.Sqlite.csproj" />
+		<ProjectReference Include="..\..\src\Krosoft.Extensions.Data.EntityFramework.InMemory\Krosoft.Extensions.Data.EntityFramework.InMemory.csproj" />
+		<ProjectReference Include="..\..\src\Krosoft.Extensions.Data.EntityFramework\Krosoft.Extensions.Data.EntityFramework.csproj" />
+		<ProjectReference Include="..\Krosoft.Extensions.Samples.Library\Krosoft.Extensions.Samples.Library.csproj" />
+	</ItemGroup>
+</Project>
