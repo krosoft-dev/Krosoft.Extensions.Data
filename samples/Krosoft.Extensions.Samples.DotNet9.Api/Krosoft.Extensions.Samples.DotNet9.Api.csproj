@@ -10,7 +10,8 @@
 	<ItemGroup>
 		<PackageReference Include="Krosoft.Extensions.Cqrs.Behaviors" Version="2025.8.20.1762" />
 		<PackageReference Include="Krosoft.Extensions.Cqrs.Behaviors.Validations" Version="2025.5.6.1484" />
-		<PackageReference Include="Krosoft.Extensions.Jobs.Hangfire" Version="2025.8.20.1714" />
+		
+
 		<PackageReference Include="Krosoft.Extensions.Options" Version="2025.8.19.1623" />
 		<PackageReference Include="Krosoft.Extensions.WebApi" Version="2025.5.13.1505" />
  		<PackageReference Include="Krosoft.Extensions.WebApi.Swagger.HealthChecks" Version="2025.5.13.1506" />
