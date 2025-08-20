@@ -1,5 +1,4 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
 	<ItemGroup>
 		<None Remove="appsettings.json" />
 	</ItemGroup>
@@ -11,22 +10,12 @@
 		</Content>
 	</ItemGroup>
 	<ItemGroup>
-	  <PackageReference Include="LinqKit.Core" Version="1.2.8" />
-	  <PackageReference Include="Krosoft.Extensions.Testing" Version="2025.5.13.1513" />
-
+		<PackageReference Include="LinqKit.Core" Version="1.2.8" />
+		<PackageReference Include="Krosoft.Extensions.Testing" Version="2025.5.13.1513" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\..\samples\Krosoft.Extensions.Samples.DotNet9.Api\Krosoft.Extensions.Samples.DotNet9.Api.csproj" />
 		<ProjectReference Include="..\..\samples\Krosoft.Extensions.Samples.Library\Krosoft.Extensions.Samples.Library.csproj" />
 		<ProjectReference Include="..\..\src\Krosoft.Extensions.Data.EntityFramework.InMemory\Krosoft.Extensions.Data.EntityFramework.InMemory.csproj" />
- 
-	</ItemGroup>
-	<ItemGroup>
-	  <Reference Include="JetBrains.Annotations">
-	    <HintPath>..\..\..\..\..\Users\krobert\.nuget\packages\jetbrains.annotations\2024.3.0\lib\netstandard2.0\JetBrains.Annotations.dll</HintPath>
-	  </Reference>
-	  <Reference Include="Krosoft.Extensions.WebApi">
-	    <HintPath>..\..\..\..\..\Users\krobert\.nuget\packages\krosoft.extensions.webapi\2025.5.13.1505\lib\net9.0\Krosoft.Extensions.WebApi.dll</HintPath>
-	  </Reference>
 	</ItemGroup>
 </Project>
