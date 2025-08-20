@@ -14,19 +14,16 @@ namespace Krosoft.Extensions.Samples.DotNet9.Api.Features;
 [AllowAnonymous]
 public class LogicielsController : ApiControllerBase
 {
-   
     [HttpPost]
     public Task<Guid> CreateAsync([FromBody] LogicielCreateCommand command, CancellationToken cancellationToken)
         => Mediator.Send(command, cancellationToken);
-     
+
     [HttpDelete]
     public Task DeleteAsync([FromBody] LogicielsDeleteCommand command,
                             CancellationToken cancellationToken)
         => Mediator.Send(command, cancellationToken);
 
- 
-
-       [HttpGet]
+    [HttpGet]
     public Task<PaginationResult<LogicielDto>> GetAsync([FromQuery] LogicielsQuery query,
                                                         CancellationToken cancellationToken)
         => Mediator.Send(query, cancellationToken);
@@ -52,6 +49,7 @@ public class LogicielsController : ApiControllerBase
     public Task UpdateAsync([FromBody] LogicielUpdateCommand command, CancellationToken cancellationToken)
         => Mediator.Send(command, cancellationToken);
 }
+
 public record LogicielImportCommand : AuthBaseCommand<int>
 {
     public LogicielImportCommand(IEnumerable<string> files)
@@ -63,19 +61,18 @@ public record LogicielImportCommand : AuthBaseCommand<int>
 }
 
 public record LogicielCreateCommand : LogicielBaseCommand<Guid>;
- 
+
 public abstract record LogicielBaseCommand<TReturn> : BaseCommand<TReturn>
 {
     public string? Nom { get; set; }
     public Guid CategorieId { get; set; }
 }
- 
 
 public record LogicielUpdateCommand : LogicielBaseCommand<Unit>
 {
     public Guid Id { get; set; }
 }
- 
+
 public record LogicielsDeleteCommand : BaseCommand
 {
     public LogicielsDeleteCommand()
