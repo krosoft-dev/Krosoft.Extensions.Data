@@ -1,7 +1,7 @@
 using Krosoft.Extensions.Core.Models;
 using Krosoft.Extensions.Core.Models.Dto;
 using Krosoft.Extensions.Samples.DotNet9.Api.Features.Logiciels._;
-using Krosoft.Extensions.Samples.DotNet9.Api.Features.Logiciels.Logiciels;
+using Krosoft.Extensions.Samples.DotNet9.Api.Features.Logiciels.GetAll;
 using Krosoft.Extensions.WebApi.Controllers;
 using Krosoft.Extensions.WebApi.Extensions;
 using Microsoft.AspNetCore.Authorization;

@@ -81,3 +81,17 @@
 //        }
 //    }
 //}
+
+using Krosoft.Extensions.Data.EntityFramework.Interfaces;
+using Microsoft.EntityFrameworkCore;
+
+namespace Krosoft.Extensions.Data.EntityFramework.Contexts;
+
+public abstract class KrosoftTenantContext<TTenantId> : KrosoftConfigurableContext<TTenantId>
+{
+    protected KrosoftTenantContext(DbContextOptions options,
+                                   ITenantDbContextProvider<TTenantId> tenantDbContextProvider) 
+        : base(options, tenantDbContextProvider)
+    {
+    }
+}

@@ -29,21 +29,21 @@ builder.Services
                                        .AddValidations())
        //Swagger.
        .AddSwagger(currentAssembly, options => options.AddHealthChecks()
-                                                                                              .AddGlobalResponses()
+                                                      .AddGlobalResponses()
                                                       .AddSecurityBearer()
                                                       .AddSecurityApiKey())
 
 //Data.
        .AddRepositories()
-       .AddDbContextInMemory<SampleKrosoftContext>(false)
-//.AddDbContextSqlite<SampleKrosoftContext>(builder.Configuration); 
+       .AddDbContextInMemory<SampleKrosoftTenantAuditableContext>(false)
+//.AddDbContextSqlite<SampleKrosoftTenantAuditableContext>(builder.Configuration); 
 //.AddDbContextPostgreSql<KrosoftExtensionTenantContext>(builder.Configuration);
-       .AddSeedService<SampleKrosoftContext, SampleKrosoftContextSeedService>()
+       //.AddSeedService<SampleKrosoftTenantAuditableContext, SampleKrosoftContextSeedService>()
 
 //Autres
        .AddHealthChecks()
        .AddCheck("Test_Endpoint", () => HealthCheckResult.Healthy())
-       .AddDbContextCheck<SampleKrosoftContext>("SampleKrosoftContext")
+       .AddDbContextCheck<SampleKrosoftTenantAuditableContext>("SampleKrosoftTenantAuditableContext")
     ;
 
 var app = builder.Build();

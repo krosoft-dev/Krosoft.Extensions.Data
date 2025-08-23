@@ -7,7 +7,7 @@ using Krosoft.Extensions.Data.EntityFramework.Models;
 using Krosoft.Extensions.Data.EntityFramework.Services;
 using Krosoft.Extensions.Samples.DotNet9.Api.Data;
 using Krosoft.Extensions.Samples.DotNet9.Api.Features.Logiciels._;
-using Krosoft.Extensions.Samples.DotNet9.Api.Features.Logiciels.Logiciels;
+using Krosoft.Extensions.Samples.DotNet9.Api.Features.Logiciels.GetAll;
 using Krosoft.Extensions.Samples.Library.Models.Entities;
 using Krosoft.Extensions.Testing;
 using Krosoft.Extensions.WebApi.Extensions;

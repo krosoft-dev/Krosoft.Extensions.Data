@@ -6,8 +6,8 @@ namespace Krosoft.Extensions.Data.EntityFramework.Extensions;
 
 public static class ChangeTrackerExtensions
 {
-    public static void ProcessCreationTenant<T>(this ChangeTracker changeTracker,
-                                                T tenantId)  
+    public static void ProcessTenantOnAdded<T>(this ChangeTracker changeTracker,
+                                               T tenantId)
     {
         foreach (var item in changeTracker.Entries<ITenant<T>>().Where(e => e.State == EntityState.Added))
         {
@@ -15,9 +15,9 @@ public static class ChangeTrackerExtensions
         }
     }
 
-    public static void ProcessCreationAuditable(this ChangeTracker changeTracker,
-                                                DateTimeOffset now,
-                                                string userId)
+    public static void ProcessAuditableOnAdded(this ChangeTracker changeTracker,
+                                               DateTimeOffset now,
+                                               string userId)
     {
         foreach (var item in changeTracker.Entries<IAuditable>()
                                           .Where(e => e.State == EntityState.Added))
@@ -29,9 +29,9 @@ public static class ChangeTrackerExtensions
         }
     }
 
-    public static void ProcessModificationAuditable(this ChangeTracker changeTracker,
-                                                    DateTimeOffset now,
-                                                    string userId)
+    public static void ProcessAuditableOnModified(this ChangeTracker changeTracker,
+                                                  DateTimeOffset now,
+                                                  string userId)
     {
         foreach (var item in changeTracker.Entries<IAuditable>()
                                           .Where(e => e.State == EntityState.Modified))

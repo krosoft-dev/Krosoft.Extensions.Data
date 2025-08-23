@@ -147,8 +147,8 @@ public class AuditableProcessor : IEntityProcessor
             var now = _auditableDbContextProvider.GetNow();
             var userId = _auditableDbContextProvider.GetUserId();
 
-            changeTracker.ProcessModificationAuditable(now, userId);
-            changeTracker.ProcessCreationAuditable(now, userId);
+            changeTracker.ProcessAuditableOnModified(now, userId);
+            changeTracker.ProcessAuditableOnAdded(now, userId);
         }
     }
 }
@@ -177,7 +177,7 @@ public class TenantProcessor<TTenantId> : IEntityProcessor
             changeTracker.DetectChanges();
 
             var tenantId = _tenantDbContextProvider.GetTenantId();
-            changeTracker.ProcessCreationTenant(tenantId);
+            changeTracker.ProcessTenantOnAdded(tenantId);
         }
     }
 }
@@ -387,8 +387,8 @@ public abstract class KrosoftConfigurableContext<TTenantId> : KrosoftContext
                 var now = _auditableDbContextProvider.GetNow();
                 var userId = _auditableDbContextProvider.GetUserId();
 
-                ChangeTracker.ProcessModificationAuditable(now, userId);
-                ChangeTracker.ProcessCreationAuditable(now, userId);
+                ChangeTracker.ProcessAuditableOnModified(now, userId);
+                ChangeTracker.ProcessAuditableOnAdded(now, userId);
             }
         }
 
@@ -401,7 +401,7 @@ public abstract class KrosoftConfigurableContext<TTenantId> : KrosoftContext
                 ChangeTracker.DetectChanges();
 
                 var tenantId = _tenantDbContextProvider.GetTenantId();
-                ChangeTracker.ProcessCreationTenant(tenantId);
+                ChangeTracker.ProcessTenantOnAdded(tenantId);
             }
         }
     }
@@ -412,39 +412,4 @@ public abstract class KrosoftConfigurableContext<TTenantId> : KrosoftContext
     private record ConfigurationMethods(MethodInfo? ConfigureAuditable, MethodInfo? ConfigureTenant);
 }
 
-/// <summary>
-/// Contexte supportant uniquement la fonctionnalité tenant
-/// </summary>
-public abstract class KrosoftTenantContext<TTenantId> : KrosoftConfigurableContext<TTenantId>
-{
-    protected KrosoftTenantContext(DbContextOptions options,
-                                   ITenantDbContextProvider<TTenantId> tenantDbContextProvider) 
-        : base(options, tenantDbContextProvider)
-    {
-    }
-}
-
-/// <summary>
-/// Contexte supportant les fonctionnalités tenant et audit
-/// </summary>
-public abstract class KrosoftTenantAuditableContext<TTenantId> : KrosoftConfigurableContext<TTenantId>
-{
-    protected KrosoftTenantAuditableContext(DbContextOptions options,
-                                            ITenantDbContextProvider<TTenantId> tenantDbContextProvider,
-                                            IAuditableDbContextProvider auditableDbContextProvider) 
-        : base(options, tenantDbContextProvider, auditableDbContextProvider)
-    {
-    }
-}
-
-/// <summary>
-/// Contexte supportant uniquement la fonctionnalité audit
-/// </summary>
-public abstract class KrosoftAuditableContext : KrosoftConfigurableContext<object>
-{
-    protected KrosoftAuditableContext(DbContextOptions options,
-                                      IAuditableDbContextProvider auditableDbContextProvider) 
-        : base(options, null, auditableDbContextProvider)
-    {
-    }
-}
+ 

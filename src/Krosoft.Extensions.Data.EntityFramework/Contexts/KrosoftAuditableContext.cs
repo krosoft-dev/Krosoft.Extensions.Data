@@ -70,3 +70,17 @@
 //        }
 //    }
 //}
+
+using Krosoft.Extensions.Data.EntityFramework.Interfaces;
+using Microsoft.EntityFrameworkCore;
+
+namespace Krosoft.Extensions.Data.EntityFramework.Contexts;
+
+public abstract class KrosoftAuditableContext : KrosoftConfigurableContext<object>
+{
+    protected KrosoftAuditableContext(DbContextOptions options,
+                                      IAuditableDbContextProvider auditableDbContextProvider) 
+        : base(options, null, auditableDbContextProvider)
+    {
+    }
+}

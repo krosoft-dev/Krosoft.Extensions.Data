@@ -3,7 +3,7 @@ using Krosoft.Extensions.Mapping.Extensions;
 using Krosoft.Extensions.Samples.DotNet9.Api.Features.Logiciels._;
 using Krosoft.Extensions.Samples.Library.Models.Entities;
 
-namespace Krosoft.Extensions.Samples.DotNet9.Api.Features.Logiciels.Logiciels;
+namespace Krosoft.Extensions.Samples.DotNet9.Api.Features.Logiciels.GetAll;
 
 public class LogicielsProfile : Profile
 {
