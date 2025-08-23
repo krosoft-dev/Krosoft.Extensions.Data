@@ -1,6 +1,8 @@
-﻿namespace Krosoft.Extensions.Samples.Library.Models.Entities;
+﻿using Krosoft.Extensions.Data.Abstractions.Models;
 
-public record Statistique : TenantEntity
+namespace Krosoft.Extensions.Samples.Library.Models.Entities;
+
+public record Statistique : TenantAuditableEntity<string>
 {
     public Guid Id { get; set; }
     public string? Nom { get; set; }

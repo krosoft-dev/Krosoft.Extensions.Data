@@ -12,7 +12,7 @@ public abstract class KrosoftTenantAuditableContext<TTenantId> : KrosoftContext
     /// Applying BaseEntity rules to all entities that inherit from it.
     /// Define MethodInfo member that is used when model is built.
     /// </summary>
-    private static readonly MethodInfo ConfigureAuditableMethod = typeof(KrosoftTenantAuditableContext<>)
+    private static readonly MethodInfo ConfigureAuditableMethod = typeof(KrosoftTenantAuditableContext<TTenantId>)
                                                                   .GetMethods(BindingFlags.Public | BindingFlags.Instance)
                                                                   .Single(t => t.IsGenericMethod && t.Name == nameof(ConfigureAuditable));
 
@@ -20,7 +20,7 @@ public abstract class KrosoftTenantAuditableContext<TTenantId> : KrosoftContext
     /// Applying BaseEntity rules to all entities that inherit from it.
     /// Define MethodInfo member that is used when model is built.
     /// </summary>
-    private static readonly MethodInfo ConfigureTenantMethod = typeof(KrosoftTenantAuditableContext<>)
+    private static readonly MethodInfo ConfigureTenantMethod = typeof(KrosoftTenantAuditableContext<TTenantId>)
                                                                .GetMethods(BindingFlags.Public | BindingFlags.Instance)
                                                                .Single(t => t.IsGenericMethod && t.Name == nameof(ConfigureTenant));
 

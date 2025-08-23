@@ -1,8 +1,9 @@
-﻿using Krosoft.Extensions.Samples.Library.Models.Enums;
+﻿using Krosoft.Extensions.Data.Abstractions.Models;
+using Krosoft.Extensions.Samples.Library.Models.Enums;
 
 namespace Krosoft.Extensions.Samples.Library.Models.Entities;
 
-public record Logiciel : TenantEntity
+public record Logiciel : TenantAuditableEntity<string>
 {
     public Guid Id { get; set; }
     public string? Nom { get; set; }
