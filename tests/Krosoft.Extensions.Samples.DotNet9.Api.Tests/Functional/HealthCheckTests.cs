@@ -24,10 +24,10 @@ public class HealthCheckTests : SampleBaseApiTest<Program>
         Check.That(healthCheckStatus.Checks).IsNotNull();
 
         var checks = healthCheckStatus.Checks.OrderBy(c => c.Key).ToList();
-        Check.That(checks).HasSize(4);
-        Check.That(checks.Select(c => c.Key)).ContainsExactly("Redis", "SampleKrosoftContext", "self", "Test_Endpoint");
-        Check.That(checks.Select(c => c.Status)).ContainsExactly("Healthy", "Healthy", "Healthy", "Healthy");
-        Check.That(checks.Select(c => c.Description)).ContainsExactly("Ping Redis en 42s", null, null, null);
+        Check.That(checks).HasSize(3);
+        Check.That(checks.Select(c => c.Key)).ContainsExactly( "SampleKrosoftContext", "self", "Test_Endpoint");
+        Check.That(checks.Select(c => c.Status)).ContainsExactly("Healthy",  "Healthy", "Healthy");
+        Check.That(checks.Select(c => c.Description)).ContainsExactly( null, null, null);
     }
 
     [TestMethod]
@@ -65,8 +65,8 @@ public class HealthCheckTests : SampleBaseApiTest<Program>
 
         Check.That(model.Entries).IsNotNull();
         var entries = model.Entries.OrderBy(c => c.Key).ToList();
-        Check.That(entries).HasSize(4);
-        Check.That(entries.Select(c => c.Key)).ContainsExactly("Redis", "SampleKrosoftContext", "self", "Test_Endpoint");
-        Check.That(entries.Select(c => c.Value.Status)).ContainsExactly(UIHealthStatus.Healthy, UIHealthStatus.Healthy, UIHealthStatus.Healthy, UIHealthStatus.Healthy);
+        Check.That(entries).HasSize(3);
+        Check.That(entries.Select(c => c.Key)).ContainsExactly("SampleKrosoftContext", "self", "Test_Endpoint");
+        Check.That(entries.Select(c => c.Value.Status)).ContainsExactly(UIHealthStatus.Healthy, UIHealthStatus.Healthy, UIHealthStatus.Healthy);
     }
 }

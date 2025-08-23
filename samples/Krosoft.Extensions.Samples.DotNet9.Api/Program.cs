@@ -35,15 +35,15 @@ builder.Services
 
 //Data.
        .AddRepositories()
-       .AddDbContextInMemory<SampleKrosoftTenantAuditableContext>(false)
-//.AddDbContextSqlite<SampleKrosoftTenantAuditableContext>(builder.Configuration); 
+       .AddDbContextInMemory<SampleKrosoftContext>(false)
+//.AddDbContextSqlite<SampleKrosoftContext>(builder.Configuration); 
 //.AddDbContextPostgreSql<KrosoftExtensionTenantContext>(builder.Configuration);
-       //.AddSeedService<SampleKrosoftTenantAuditableContext, SampleKrosoftContextSeedService>()
+       .AddSeedService<SampleKrosoftContext, SampleKrosoftContextSeedService>()
 
 //Autres
        .AddHealthChecks()
        .AddCheck("Test_Endpoint", () => HealthCheckResult.Healthy())
-       .AddDbContextCheck<SampleKrosoftTenantAuditableContext>("SampleKrosoftTenantAuditableContext")
+       .AddDbContextCheck<SampleKrosoftContext>("SampleKrosoftContext")
     ;
 
 var app = builder.Build();

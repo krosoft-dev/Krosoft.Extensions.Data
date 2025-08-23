@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using Krosoft.Extensions.Data.Abstractions.Interfaces;
+using Krosoft.Extensions.Mapping.Extensions;
 using Krosoft.Extensions.Samples.Library.Models.Entities;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -29,5 +30,20 @@ public class LanguesQueryHandler : IRequestHandler<LanguesQuery, IEnumerable<Lan
                                        .ProjectTo<LangueDto>(_mapper.ConfigurationProvider)
                                        .ToListAsync(cancellationToken);
         return langues;
+    }
+}
+
+ 
+public class LanguesProfile : Profile
+{
+    /// <summary>
+    /// Initialise une nouvelle instance de la classe <see cref="LanguesProfile" />.
+    /// </summary>
+    public LanguesProfile()
+    {
+        CreateMap<Langue, LangueDto>()
+            .ForMember(dest => dest.Id, o => o.MapFrom(src => src.Id))
+            .ForMember(dest => dest.Code, o => o.MapFrom(src => src.Code))
+            .ForAllOtherMembers(m => m.Ignore());
     }
 }

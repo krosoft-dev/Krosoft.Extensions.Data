@@ -172,15 +172,15 @@ public class ServiceProviderExtensionsTests : BaseTest
         void GetServices(IServiceCollection services)
         {
             services.AddLoggingExt();
-            services.AddRepositories();
-            services.AddScoped<ITenantDbContextProvider>(x => new TenantDbContextProvider("test"));
+            services.AddRepositories(); 
+            services.AddScoped<ITenantDbContextProvider, FakeTenantDbContextProvider>();
             services.AddScoped<IAuditableDbContextProvider, FakeAuditableDbContextProvider>();
             services.AddDbContextInMemory<SampleKrosoftTenantAuditableContext>(true);
             services.AddSeedService<SampleKrosoftTenantAuditableContext, SampleSeedService<SampleKrosoftTenantAuditableContext>>();
         }
 
         await using var serviceProvider = CreateServiceCollection(GetServices);
-        using var contextScope = serviceProvider.CreateReadDbContextScope(new TenantAuditableDbContextSettings<SampleKrosoftTenantAuditableContext>(new FakeTenantDbContextProvider().GetTenantId(), DateTime.Now, ""));
+        using var contextScope = serviceProvider.CreateReadDbContextScope(new TenantAuditableDbContextSettings<SampleKrosoftTenantAuditableContext>("test", DateTime.Now, ""));
 
         var repository = contextScope.GetReadRepository<Logiciel>();
 
@@ -196,15 +196,15 @@ public class ServiceProviderExtensionsTests : BaseTest
         void GetServices(IServiceCollection services)
         {
             services.AddLoggingExt();
-            services.AddRepositories();
-            services.AddScoped<ITenantDbContextProvider>(x => new TenantDbContextProvider("Microsoft"));
+            services.AddRepositories();  
+            services.AddScoped<ITenantDbContextProvider, FakeTenantDbContextProvider>();
             services.AddScoped<IAuditableDbContextProvider, FakeAuditableDbContextProvider>();
             services.AddDbContextInMemory<SampleKrosoftTenantAuditableContext>(true);
             services.AddSeedService<SampleKrosoftTenantAuditableContext, SampleSeedService<SampleKrosoftTenantAuditableContext>>();
         }
 
         await using var serviceProvider = CreateServiceCollection(GetServices);
-        using var contextScope = serviceProvider.CreateReadDbContextScope(new TenantAuditableDbContextSettings<SampleKrosoftTenantAuditableContext>(new FakeTenantDbContextProvider().GetTenantId(), DateTime.Now, ""));
+        using var contextScope = serviceProvider.CreateReadDbContextScope(new TenantAuditableDbContextSettings<SampleKrosoftTenantAuditableContext>("Microsoft", DateTime.Now, ""));
 
         var repository = contextScope.GetReadRepository<Logiciel>();
 

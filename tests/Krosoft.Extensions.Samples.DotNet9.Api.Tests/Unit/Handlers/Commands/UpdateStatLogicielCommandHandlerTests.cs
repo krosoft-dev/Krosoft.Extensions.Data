@@ -1,4 +1,5 @@
-﻿using Krosoft.Extensions.Data.EntityFramework.Extensions;
+﻿using Krosoft.Extensions.Core.Extensions;
+using Krosoft.Extensions.Data.EntityFramework.Extensions;
 using Krosoft.Extensions.Data.EntityFramework.InMemory.Extensions;
 using Krosoft.Extensions.Data.EntityFramework.Interfaces;
 using Krosoft.Extensions.Data.EntityFramework.Services;
@@ -27,12 +28,13 @@ public class UpdateStatLogicielCommandHandlerTests : SampleBaseTest<Program>
     protected override void AddServices(IServiceCollection services, IConfiguration configuration)
     {
         _mockLogger = new Mock<ILogger<UpdateStatLogicielCommandHandler>>();
-        services.SwapTransient(_ => _mockLogger.Object);
-        services.AddRepositories();
-        services.AddScoped<ITenantDbContextProvider, FakeTenantDbContextProvider>();
-        services.AddScoped<IAuditableDbContextProvider, FakeAuditableDbContextProvider>();
-        services.AddDbContextInMemory<SampleKrosoftTenantAuditableContext>(true);
-        services.AddSeedService<SampleKrosoftTenantAuditableContext, SampleSeedService<SampleKrosoftTenantAuditableContext>>();
+        services.SwapTransient(_ => _mockLogger.Object)
+                .AddRepositories()
+                .AddDateTimeService()
+                .AddScoped<ITenantDbContextProvider, FakeTenantDbContextProvider>()
+                .AddScoped<IAuditableDbContextProvider, FakeAuditableDbContextProvider>()
+                .AddDbContextInMemory<SampleKrosoftTenantAuditableContext>(true)
+                .AddSeedService<SampleKrosoftTenantAuditableContext, SampleSeedService<SampleKrosoftTenantAuditableContext>>();
 
         base.AddServices(services, configuration);
     }

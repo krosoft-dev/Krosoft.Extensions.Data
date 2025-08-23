@@ -16,7 +16,7 @@ namespace Krosoft.Extensions.Data.EntityFramework.Tests.Scopes;
 [TestClass]
 public class ReadDbContextScopeTests : BaseTest
 {
-    private static async Task CheckResults<T>(ReadDbContextScope<T> contextScope) where T : KrosoftContext
+    private static async Task CheckResults<T>(ReadDbContextScope<T> contextScope, IEnumerable<string> results) where T : KrosoftContext
     {
         var repository = contextScope.GetReadRepository<Logiciel>();
 
@@ -24,8 +24,8 @@ public class ReadDbContextScopeTests : BaseTest
                                         .ToListAsync(CancellationToken.None);
 
         Check.That(logiciels).IsNotNull();
-        Check.That(logiciels).HasSize(5);
-        Check.That(logiciels.Select(x => x.Nom)).ContainsExactly("Logiciel1", "Logiciel2", "Logiciel3", "Logiciel4", "Logiciel5");
+        Check.That(logiciels).HasSize(results.Count());
+        Check.That(logiciels.Select(x => x.Nom)).ContainsExactly(results);
     }
 
     [TestMethod]
@@ -45,7 +45,11 @@ public class ReadDbContextScopeTests : BaseTest
                                                                                                   "UtilisateurId");
             using (var contextScope = new ReadDbContextScope<SampleKrosoftAuditableContext>(scope.CreateScope(), dbContextSettings))
             {
-                await CheckResults(contextScope);
+                await CheckResults(contextScope, [
+                    "Adobe Acrobat Reader",
+                    "Microsoft Excel",
+                    "Logiciel1", "Logiciel2", "Logiciel3", "Logiciel4", "Logiciel5"
+                ]);
             }
         }
     }
@@ -64,7 +68,7 @@ public class ReadDbContextScopeTests : BaseTest
         {
             using (var contextScope = new ReadDbContextScope<SampleKrosoftContext>(scope.CreateScope(), new DbContextSettings<SampleKrosoftContext>()))
             {
-                await CheckResults(contextScope);
+                await CheckResults(contextScope, ["Adobe Acrobat Reader", "Microsoft Excel", "Logiciel1", "Logiciel2", "Logiciel3", "Logiciel4", "Logiciel5"]);
             }
         }
     }
@@ -89,7 +93,7 @@ public class ReadDbContextScopeTests : BaseTest
                                                                                                               "UtilisateurId");
             using (var contextScope = new ReadDbContextScope<SampleKrosoftTenantAuditableContext>(scope.CreateScope(), dbContextSettings))
             {
-                await CheckResults(contextScope);
+                await CheckResults(contextScope, ["Logiciel1", "Logiciel2", "Logiciel3", "Logiciel4", "Logiciel5"]);
             }
         }
     }
@@ -111,7 +115,7 @@ public class ReadDbContextScopeTests : BaseTest
             var dbContextSettings = new TenantDbContextSettings<SampleKrosoftTenantContext>(tenantId);
             using (var contextScope = new ReadDbContextScope<SampleKrosoftTenantContext>(scope.CreateScope(), dbContextSettings))
             {
-                await CheckResults(contextScope);
+                await CheckResults(contextScope, ["Logiciel1", "Logiciel2", "Logiciel3", "Logiciel4", "Logiciel5"]);
             }
         }
     }

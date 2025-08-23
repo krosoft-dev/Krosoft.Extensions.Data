@@ -6,7 +6,7 @@ using Krosoft.Extensions.Samples.DotNet9.Api.Tests.Core;
 namespace Krosoft.Extensions.Samples.DotNet9.Api.Tests.Functional;
 
 [TestClass]
-public class LanguesControllerTests : SampleBaseApiTest<Program>
+public class LanguesEndpointTests : SampleBaseApiTest<Program>
 {
     [TestMethod]
     public async Task Get_Ok()

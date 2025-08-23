@@ -4,7 +4,7 @@ using Krosoft.Extensions.Samples.DotNet9.Api.Tests.Core;
 namespace Krosoft.Extensions.Samples.DotNet9.Api.Tests.Functional;
 
 [TestClass]
-public class HelloControllerTests : SampleBaseApiTest<Program>
+public class HelloEndpointTests : SampleBaseApiTest<Program>
 {
     [TestMethod]
     public async Task Hello_Ok()
@@ -17,6 +17,6 @@ public class HelloControllerTests : SampleBaseApiTest<Program>
         Check.That(response.StatusCode).IsEqualTo(HttpStatusCode.OK);
 
         var result = await response.Content.ReadAsStringAsync(CancellationToken.None);
-        Check.That(result).IsEqualTo("Hello DotNet8");
+        Check.That(result).IsEqualTo("Hello DotNet9");
     }
 }
