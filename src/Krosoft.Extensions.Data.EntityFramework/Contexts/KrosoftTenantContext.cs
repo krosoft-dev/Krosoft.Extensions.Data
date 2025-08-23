@@ -67,7 +67,7 @@ public abstract class KrosoftTenantContext : KrosoftContext
             ChangeTracker.DetectChanges();
 
             var tenantId = _tenantDbContextProvider.GetTenantId();
-            ChangeTracker.ProcessCreationTenant(tenantId);
+            ChangeTracker.ProcessTenantOnAdded(tenantId);
         }
     }
 }

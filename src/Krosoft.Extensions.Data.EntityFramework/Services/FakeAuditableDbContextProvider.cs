@@ -4,7 +4,7 @@ namespace Krosoft.Extensions.Data.EntityFramework.Services;
 
 public class FakeAuditableDbContextProvider : IAuditableDbContextProvider
 {
-    public DateTime GetNow() => new DateTime(2012, 9, 28);
+    public DateTimeOffset GetNow() => new DateTime(2012, 9, 28);
 
-    public string GetUtilisateurId() => "Fake_Utilisateur_Id";
+    public string GetUserId() => "Fake_Utilisateur_Id";
 }

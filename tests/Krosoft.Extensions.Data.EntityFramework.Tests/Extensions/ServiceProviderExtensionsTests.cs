@@ -36,8 +36,8 @@ public class ServiceProviderExtensionsTests : BaseTest
                                         .ToListAsync(CancellationToken.None);
 
         Check.That(logiciels).IsNotNull();
-        Check.That(logiciels).HasSize(5);
-        Check.That(logiciels.Select(x => x.Nom)).ContainsExactly("Logiciel1", "Logiciel2", "Logiciel3", "Logiciel4", "Logiciel5");
+        Check.That(logiciels).HasSize(7);
+        Check.That(logiciels.Select(x => x.Nom)).ContainsExactly("Adobe Acrobat Reader", "Microsoft Excel", "Logiciel1", "Logiciel2", "Logiciel3", "Logiciel4", "Logiciel5");
     }
 
     [TestMethod]
@@ -60,8 +60,9 @@ public class ServiceProviderExtensionsTests : BaseTest
                                         .ToListAsync(CancellationToken.None);
 
         Check.That(logiciels).IsNotNull();
-        Check.That(logiciels).HasSize(5);
-        Check.That(logiciels.Select(x => x.Nom)).ContainsExactly("Logiciel1", "Logiciel2", "Logiciel3", "Logiciel4", "Logiciel5");
+        Check.That(logiciels).HasSize(7);
+        Check.That(logiciels.Select(x => x.Nom))
+             .ContainsExactly("Adobe Acrobat Reader", "Microsoft Excel", "Logiciel1", "Logiciel2", "Logiciel3", "Logiciel4", "Logiciel5");
     }
 
     [TestMethod]
@@ -111,8 +112,8 @@ public class ServiceProviderExtensionsTests : BaseTest
                                         .ToListAsync(CancellationToken.None);
 
         Check.That(logiciels).IsNotNull();
-        Check.That(logiciels).HasSize(5);
-        Check.That(logiciels.Select(x => x.Nom)).ContainsExactly("Logiciel1", "Logiciel2", "Logiciel3", "Logiciel4", "Logiciel5");
+        Check.That(logiciels).HasSize(7);
+        Check.That(logiciels.Select(x => x.Nom)).ContainsExactly("Adobe Acrobat Reader", "Microsoft Excel", "Logiciel1", "Logiciel2", "Logiciel3", "Logiciel4", "Logiciel5");
     }
 
     [TestMethod]
@@ -135,8 +136,8 @@ public class ServiceProviderExtensionsTests : BaseTest
                                         .ToListAsync(CancellationToken.None);
 
         Check.That(logiciels).IsNotNull();
-        Check.That(logiciels).HasSize(5);
-        Check.That(logiciels.Select(x => x.Nom)).ContainsExactly("Logiciel1", "Logiciel2", "Logiciel3", "Logiciel4", "Logiciel5");
+        Check.That(logiciels).HasSize(7);
+        Check.That(logiciels.Select(x => x.Nom)).ContainsExactly("Adobe Acrobat Reader", "Microsoft Excel", "Logiciel1", "Logiciel2", "Logiciel3", "Logiciel4", "Logiciel5");
     }
 
     [TestMethod]
@@ -163,5 +164,55 @@ public class ServiceProviderExtensionsTests : BaseTest
         Check.That(logiciels).IsNotNull();
         Check.That(logiciels).HasSize(5);
         Check.That(logiciels.Select(x => x.Nom)).ContainsExactly("Logiciel1", "Logiciel2", "Logiciel3", "Logiciel4", "Logiciel5");
+    }
+
+    [TestMethod]
+    public async Task CreateReadDbContextScope_Tenant_Empty()
+    {
+        void GetServices(IServiceCollection services)
+        {
+            services.AddLoggingExt();
+            services.AddRepositories(); 
+            services.AddScoped<ITenantDbContextProvider, FakeTenantDbContextProvider>();
+            services.AddScoped<IAuditableDbContextProvider, FakeAuditableDbContextProvider>();
+            services.AddDbContextInMemory<SampleKrosoftTenantAuditableContext>(true);
+            services.AddSeedService<SampleKrosoftTenantAuditableContext, SampleSeedService<SampleKrosoftTenantAuditableContext>>();
+        }
+
+        await using var serviceProvider = CreateServiceCollection(GetServices);
+        using var contextScope = serviceProvider.CreateReadDbContextScope(new TenantAuditableDbContextSettings<SampleKrosoftTenantAuditableContext>("test", DateTime.Now, ""));
+
+        var repository = contextScope.GetReadRepository<Logiciel>();
+
+        var logiciels = await repository.Query()
+                                        .ToListAsync(CancellationToken.None);
+
+        Check.That(logiciels).IsEmpty();
+    }
+
+    [TestMethod]
+    public async Task CreateReadDbContextScope_Tenant_Ok()
+    {
+        void GetServices(IServiceCollection services)
+        {
+            services.AddLoggingExt();
+            services.AddRepositories();  
+            services.AddScoped<ITenantDbContextProvider, FakeTenantDbContextProvider>();
+            services.AddScoped<IAuditableDbContextProvider, FakeAuditableDbContextProvider>();
+            services.AddDbContextInMemory<SampleKrosoftTenantAuditableContext>(true);
+            services.AddSeedService<SampleKrosoftTenantAuditableContext, SampleSeedService<SampleKrosoftTenantAuditableContext>>();
+        }
+
+        await using var serviceProvider = CreateServiceCollection(GetServices);
+        using var contextScope = serviceProvider.CreateReadDbContextScope(new TenantAuditableDbContextSettings<SampleKrosoftTenantAuditableContext>("Microsoft", DateTime.Now, ""));
+
+        var repository = contextScope.GetReadRepository<Logiciel>();
+
+        var logiciels = await repository.Query()
+                                        .ToListAsync(CancellationToken.None);
+
+        Check.That(logiciels).IsNotNull();
+        Check.That(logiciels).HasSize(1);
+        Check.That(logiciels.Select(x => x.Nom)).ContainsExactly("Microsoft Excel");
     }
 }

@@ -10,51 +10,51 @@ public class AuditableEntityTests
     {
         var entity = new Pays();
 
-        Check.That(entity.CreateurDate).IsEqualTo(DateTime.MinValue);
-        Check.That(entity.ModificateurDate).IsEqualTo(DateTime.MinValue);
+        Check.That(entity.CreatedAt).IsEqualTo(DateTimeOffset.MinValue);
+        Check.That(entity.UpdatedAt).IsEqualTo(DateTimeOffset.MinValue);
     }
 
     [TestMethod]
-    public void AuditableEntity_SetCreateurDate()
+    public void AuditableEntity_SetCreatedAt()
     {
         var entity = new Pays();
-        var createurDate = DateTime.Now.AddDays(-1);
+        var createurDate = DateTimeOffset.Now.AddDays(-1);
 
-        entity.CreateurDate = createurDate;
+        entity.CreatedAt = createurDate;
 
-        Check.That(entity.CreateurDate).IsEqualTo(createurDate);
+        Check.That(entity.CreatedAt).IsEqualTo(createurDate);
     }
 
     [TestMethod]
-    public void AuditableEntity_SetCreateurId()
+    public void AuditableEntity_SetCreatedBy()
     {
         var entity = new Pays();
         var createurId = "user123";
 
-        entity.CreateurId = createurId;
+        entity.CreatedBy = createurId;
 
-        Check.That(entity.CreateurId).IsEqualTo(createurId);
+        Check.That(entity.CreatedBy).IsEqualTo(createurId);
     }
 
     [TestMethod]
-    public void AuditableEntity_SetModificateurDate()
+    public void AuditableEntity_SetUpdatedAt()
     {
         var entity = new Pays();
-        var modificateurDate = DateTime.Now.AddDays(-1);
+        var updatedAt = DateTimeOffset.Now.AddDays(-1);
 
-        entity.ModificateurDate = modificateurDate;
+        entity.UpdatedAt = updatedAt;
 
-        Check.That(entity.ModificateurDate).IsEqualTo(modificateurDate);
+        Check.That(entity.UpdatedAt).IsEqualTo(updatedAt);
     }
 
     [TestMethod]
-    public void AuditableEntity_SetModificateurId()
+    public void AuditableEntity_SetUpdatedBy()
     {
         var entity = new Pays();
         var modificateurId = "user456";
 
-        entity.ModificateurId = modificateurId;
+        entity.UpdatedBy = modificateurId;
 
-        Check.That(entity.ModificateurId).IsEqualTo(modificateurId);
+        Check.That(entity.UpdatedBy).IsEqualTo(modificateurId);
     }
 }

@@ -2,8 +2,8 @@
 
 public interface IAuditable
 {
-    public string? ModificateurId { get; set; }
-    public DateTime ModificateurDate { get; set; }
-    public string? CreateurId { get; set; }
-    public DateTime CreateurDate { get; set; }
+    public string? CreatedBy { get; set; }
+    public DateTimeOffset CreatedAt { get; set; }
+    public string? UpdatedBy { get; set; }
+    public DateTimeOffset UpdatedAt { get; set; }
 }

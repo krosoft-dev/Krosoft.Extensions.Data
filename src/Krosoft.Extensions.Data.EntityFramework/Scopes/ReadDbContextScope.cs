@@ -75,7 +75,7 @@ internal class ReadDbContextScope<T> : IReadDbContextScope where T : KrosoftCont
             var tenantDbContextProvider = new TenantDbContextProvider(tenantAuditableDbContextSettings.TenantId);
 
             var auditableDbContextProvider = new AuditableDbContextProvider(tenantAuditableDbContextSettings.Now,
-                                                                            tenantAuditableDbContextSettings.UtilisateurId);
+                                                                            tenantAuditableDbContextSettings.UserId);
 
             var krosoftContext = (T?)Activator.CreateInstance(typeof(T),
                                                               serviceScope.ServiceProvider.GetRequiredService<DbContextOptions>(),

@@ -10,7 +10,7 @@ public static class ServiceProviderExtensions
 {
     public static IDbContextScope CreateDbContextScope<T>(this IServiceProvider provider,
                                                           string tenantId,
-                                                          DateTime now,
+                                                          DateTimeOffset now,
                                                           string utilisateurId)
         where T : KrosoftTenantAuditableContext
         => CreateDbContextScope(provider,
