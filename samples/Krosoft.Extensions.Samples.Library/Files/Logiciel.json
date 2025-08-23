@@ -1,5 +1,28 @@
 ﻿[
   {
+    "Id": "2a7c1a9d-6db3-4d1e-8d8b-9e8431d1b55c",
+    "Nom": "Adobe Acrobat Reader",
+    "Description": "Logiciel de lecture de fichiers PDF",
+
+    "StatutCode": 1,
+    "CreatedAt": "2023-01-01T12:00:00Z",
+    "CreatedBy": "Systeme",
+    "UpdatedBy": "Systeme",
+    "tenantId": "Adobe"
+  },
+  {
+    "Id": "4560f48d-4d86-4b1e-8b22-51c1a9e3d6ca",
+    "Nom": "Microsoft Excel",
+    "Description": "Logiciel de calcul de tableaux",
+
+    "StatutCode": 1,
+    "CreatedAt": "2023-01-01T12:00:00Z",
+    "CreatedBy": "Systeme",
+    "UpdatedBy": "Systeme",
+    "tenantId": "Microsoft"
+  },
+
+  {
     "Id": "1f39c60d-4f92-4f17-aa45-99e8f86a3b3a",
     "Nom": "Logiciel1",
     "Description": "Premier logiciel",
@@ -59,4 +82,4 @@
     "UpdatedBy": "Systeme",
     "tenantId": "Fake_Tenant_Id"
   }
-] 
+]

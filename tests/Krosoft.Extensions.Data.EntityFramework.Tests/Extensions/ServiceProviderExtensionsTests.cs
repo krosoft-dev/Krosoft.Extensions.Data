@@ -36,8 +36,8 @@ public class ServiceProviderExtensionsTests : BaseTest
                                         .ToListAsync(CancellationToken.None);
 
         Check.That(logiciels).IsNotNull();
-        Check.That(logiciels).HasSize(5);
-        Check.That(logiciels.Select(x => x.Nom)).ContainsExactly("Logiciel1", "Logiciel2", "Logiciel3", "Logiciel4", "Logiciel5");
+        Check.That(logiciels).HasSize(7);
+        Check.That(logiciels.Select(x => x.Nom)).ContainsExactly("Adobe Acrobat Reader", "Microsoft Excel","Logiciel1", "Logiciel2", "Logiciel3", "Logiciel4", "Logiciel5");
     }
 
     [TestMethod]
@@ -60,8 +60,9 @@ public class ServiceProviderExtensionsTests : BaseTest
                                         .ToListAsync(CancellationToken.None);
 
         Check.That(logiciels).IsNotNull();
-        Check.That(logiciels).HasSize(5);
-        Check.That(logiciels.Select(x => x.Nom)).ContainsExactly("Logiciel1", "Logiciel2", "Logiciel3", "Logiciel4", "Logiciel5");
+        Check.That(logiciels).HasSize(7);
+        Check.That(logiciels.Select(x => x.Nom))
+             .ContainsExactly("Adobe Acrobat Reader", "Microsoft Excel", "Logiciel1", "Logiciel2", "Logiciel3", "Logiciel4", "Logiciel5");
     }
 
     [TestMethod]
@@ -111,8 +112,8 @@ public class ServiceProviderExtensionsTests : BaseTest
                                         .ToListAsync(CancellationToken.None);
 
         Check.That(logiciels).IsNotNull();
-        Check.That(logiciels).HasSize(5);
-        Check.That(logiciels.Select(x => x.Nom)).ContainsExactly("Logiciel1", "Logiciel2", "Logiciel3", "Logiciel4", "Logiciel5");
+        Check.That(logiciels).HasSize(7);
+        Check.That(logiciels.Select(x => x.Nom)).ContainsExactly("Adobe Acrobat Reader", "Microsoft Excel","Logiciel1", "Logiciel2", "Logiciel3", "Logiciel4", "Logiciel5");
     }
 
     [TestMethod]
@@ -135,8 +136,8 @@ public class ServiceProviderExtensionsTests : BaseTest
                                         .ToListAsync(CancellationToken.None);
 
         Check.That(logiciels).IsNotNull();
-        Check.That(logiciels).HasSize(5);
-        Check.That(logiciels.Select(x => x.Nom)).ContainsExactly("Logiciel1", "Logiciel2", "Logiciel3", "Logiciel4", "Logiciel5");
+        Check.That(logiciels).HasSize(7);
+        Check.That(logiciels.Select(x => x.Nom)).ContainsExactly("Adobe Acrobat Reader", "Microsoft Excel","Logiciel1", "Logiciel2", "Logiciel3", "Logiciel4", "Logiciel5");
     }
 
     [TestMethod]

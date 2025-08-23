@@ -1,12 +1,10 @@
 using System.Reflection;
+using Krosoft.Extensions.Core.Extensions;
 using Krosoft.Extensions.Cqrs.Behaviors.Extensions;
 using Krosoft.Extensions.Cqrs.Behaviors.Validations.Extensions;
 using Krosoft.Extensions.Data.EntityFramework.Extensions;
 using Krosoft.Extensions.Data.EntityFramework.InMemory.Extensions;
-using Krosoft.Extensions.Options.Extensions;
 using Krosoft.Extensions.Samples.DotNet9.Api.Data;
-using Krosoft.Extensions.Samples.DotNet9.Api.Features.Models;
-using Krosoft.Extensions.Samples.DotNet9.Api.Shared.Services;
 using Krosoft.Extensions.WebApi.Extensions;
 using Krosoft.Extensions.WebApi.HealthChecks.Extensions;
 using Krosoft.Extensions.WebApi.Swagger.Extensions;
@@ -24,14 +22,14 @@ var builder = WebApplication.CreateBuilder(args);
 
 //Web API.
 builder.Services
-       .AddOptionsValidator<AppSettings, AppSettingsValidateOptions>(builder.Configuration)
+       .AddDateTimeService()
        .AddWebApi(builder.Configuration, assemblies)
        //CQRS.
        .AddBehaviors(options => options.AddLogging()
                                        .AddValidations())
        //Swagger.
        .AddSwagger(currentAssembly, options => options.AddHealthChecks()
-                                                      .AddGlobalResponses()
+                                                                                              .AddGlobalResponses()
                                                       .AddSecurityBearer()
                                                       .AddSecurityApiKey())
 

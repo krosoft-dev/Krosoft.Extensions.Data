@@ -9,10 +9,7 @@
 	</PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="Krosoft.Extensions.Cqrs.Behaviors" Version="2025.8.22.2216" />
-		<PackageReference Include="Krosoft.Extensions.Cqrs.Behaviors.Validations" Version="2025.8.22.2215" />
-		
-
-		<PackageReference Include="Krosoft.Extensions.Options" Version="2025.8.19.1623" />
+		<PackageReference Include="Krosoft.Extensions.Cqrs.Behaviors.Validations" Version="2025.8.22.2215" />  <PackageReference Include="Krosoft.Extensions.Mapping" Version="2025.8.19.1647" />
 		<PackageReference Include="Krosoft.Extensions.WebApi" Version="2025.8.21.1936" />
  		<PackageReference Include="Krosoft.Extensions.WebApi.Swagger.HealthChecks" Version="2025.8.19.1589" />
 	 		 	<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.22.1" />
@@ -27,5 +24,10 @@
 		<ProjectReference Include="..\..\src\Krosoft.Extensions.Data.EntityFramework.InMemory\Krosoft.Extensions.Data.EntityFramework.InMemory.csproj" />
 		<ProjectReference Include="..\..\src\Krosoft.Extensions.Data.EntityFramework\Krosoft.Extensions.Data.EntityFramework.csproj" />
 		<ProjectReference Include="..\Krosoft.Extensions.Samples.Library\Krosoft.Extensions.Samples.Library.csproj" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="Features\Langues\Dto\" />
+	  <Folder Include="Features\Logiciels\NewFolder\" />
+	  <Folder Include="Shared\Services\" />
 	</ItemGroup>
 </Project>
