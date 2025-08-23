@@ -3,21 +3,16 @@
   "extends": ["config:recommended"],
   "labels": ["renovate"],
   "assignees": ["krosoft-dev"],
-{
   "packageRules": [
     {
       "groupName": "all non-major dependencies",
       "groupSlug": "all-minor-patch",
-      "matchPackageNames": [
-        "*"
-      ],
-      "matchUpdateTypes": [
-        "minor",
-        "patch"
-      ]
+      "matchPackageNames": ["*"],
+      "matchUpdateTypes": ["minor", "patch"]
+    },
+    {
+      "groupName": "Krosoft",
+      "matchPackageNames": ["Krosoft.Extensions.**"]
     }
   ]
 }
-}
-
- 
