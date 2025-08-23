@@ -1,6 +1,6 @@
 ﻿namespace Krosoft.Extensions.Data.Abstractions.Models;
 
-public abstract record TenantAuditableEntity : AuditableEntity, ITenant
+public abstract record TenantAuditableEntity<T> : AuditableEntity, ITenant<T> where T : class
 {
-    public string? TenantId { get; set; }
+    public T? TenantId { get; set; }
 }

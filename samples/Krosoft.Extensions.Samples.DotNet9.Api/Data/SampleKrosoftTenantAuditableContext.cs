@@ -6,10 +6,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Krosoft.Extensions.Samples.DotNet9.Api.Data;
 
-public class SampleKrosoftTenantAuditableContext : KrosoftTenantAuditableContext
+public class SampleKrosoftTenantAuditableContext : KrosoftTenantAuditableContext<string>
 {
     public SampleKrosoftTenantAuditableContext(DbContextOptions options,
-                                               ITenantDbContextProvider tenantDbContextProvider,
+                                               ITenantDbContextProvider<string> tenantDbContextProvider,
                                                IAuditableDbContextProvider auditableDbContextProvider)
         : base(options,
                tenantDbContextProvider,

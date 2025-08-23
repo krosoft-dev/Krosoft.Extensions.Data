@@ -4,12 +4,8 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Krosoft.Extensions.Samples.DotNet9.Api.Data.Configurations.Activite;
 
-public class LogicielConfiguration : ActiviteEntityTypeConfiguration<Logiciel>
+public class LogicielConfiguration() : ActiviteEntityTypeConfiguration<Logiciel>("Logiciels")
 {
-    public LogicielConfiguration() : base("Logiciels")
-    {
-    }
-
     protected override void ConfigureMore(EntityTypeBuilder<Logiciel> builder)
     {
         // Primary Key
@@ -17,6 +13,9 @@ public class LogicielConfiguration : ActiviteEntityTypeConfiguration<Logiciel>
 
         // Properties.
         builder.Property(t => t.Nom).IsRequired();
+        builder.Property(t => t.Description).IsRequired();
+        builder.Property(t => t.CategorieId).IsRequired();
+        builder.Property(t => t.StatutCode).IsRequired();
 
         //Relationships. 
         builder.HasOne(e => e.Categorie)

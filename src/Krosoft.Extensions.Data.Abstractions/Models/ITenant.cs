@@ -1,6 +1,6 @@
 ﻿namespace Krosoft.Extensions.Data.Abstractions.Models;
 
-public interface ITenant
+public interface ITenant<T>
 {
-    public string? TenantId { get; set; }
+    public T? TenantId { get; set; }
 }

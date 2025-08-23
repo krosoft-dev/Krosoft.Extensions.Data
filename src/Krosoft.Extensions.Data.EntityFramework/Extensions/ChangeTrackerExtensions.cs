@@ -1,43 +1,43 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Krosoft.Extensions.Data.Abstractions.Models;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
-using Krosoft.Extensions.Data.Abstractions.Models;
 
 namespace Krosoft.Extensions.Data.EntityFramework.Extensions;
 
 public static class ChangeTrackerExtensions
 {
-    public static void ProcessCreationTenant(this ChangeTracker changeTracker,
-                                             string tenantId)
+    public static void ProcessTenantOnAdded<T>(this ChangeTracker changeTracker,
+                                               T tenantId)
     {
-        foreach (var item in changeTracker.Entries<ITenant>().Where(e => e.State == EntityState.Added))
+        foreach (var item in changeTracker.Entries<ITenant<T>>().Where(e => e.State == EntityState.Added))
         {
             item.Entity.TenantId = tenantId;
         }
     }
 
-    public static void ProcessCreationAuditable(this ChangeTracker changeTracker,
-                                                DateTime now,
-                                                string utilisateurId)
+    public static void ProcessAuditableOnAdded(this ChangeTracker changeTracker,
+                                               DateTimeOffset now,
+                                               string userId)
     {
         foreach (var item in changeTracker.Entries<IAuditable>()
                                           .Where(e => e.State == EntityState.Added))
         {
-            item.Entity.CreateurId = utilisateurId;
-            item.Entity.CreateurDate = now;
-            item.Entity.ModificateurId = utilisateurId;
-            item.Entity.ModificateurDate = now;
+            item.Entity.CreatedBy = userId;
+            item.Entity.CreatedAt = now;
+            item.Entity.UpdatedBy = userId;
+            item.Entity.UpdatedAt = now;
         }
     }
 
-    public static void ProcessModificationAuditable(this ChangeTracker changeTracker,
-                                                    DateTime now,
-                                                    string utilisateurId)
+    public static void ProcessAuditableOnModified(this ChangeTracker changeTracker,
+                                                  DateTimeOffset now,
+                                                  string userId)
     {
         foreach (var item in changeTracker.Entries<IAuditable>()
                                           .Where(e => e.State == EntityState.Modified))
         {
-            item.Entity.ModificateurId = utilisateurId;
-            item.Entity.ModificateurDate = now;
+            item.Entity.UpdatedBy = userId;
+            item.Entity.UpdatedAt = now;
         }
     }
 }

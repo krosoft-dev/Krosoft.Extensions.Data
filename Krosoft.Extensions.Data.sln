@@ -35,6 +35,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{02EA
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Krosoft.Extensions.Samples.DotNet9.Api", "samples\Krosoft.Extensions.Samples.DotNet9.Api\Krosoft.Extensions.Samples.DotNet9.Api.csproj", "{1A0ACD2C-B723-EFB4-460D-56A46152AB28}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Krosoft.Extensions.Samples.DotNet9.Api.Tests", "tests\Krosoft.Extensions.Samples.DotNet9.Api.Tests\Krosoft.Extensions.Samples.DotNet9.Api.Tests.csproj", "{FDF7A4FE-F653-3555-A530-EC1036D3CF18}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -255,6 +257,22 @@ Global
 		{1A0ACD2C-B723-EFB4-460D-56A46152AB28}.Release|x64.Build.0 = Release|Any CPU
 		{1A0ACD2C-B723-EFB4-460D-56A46152AB28}.Release|x86.ActiveCfg = Release|Any CPU
 		{1A0ACD2C-B723-EFB4-460D-56A46152AB28}.Release|x86.Build.0 = Release|Any CPU
+		{FDF7A4FE-F653-3555-A530-EC1036D3CF18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDF7A4FE-F653-3555-A530-EC1036D3CF18}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDF7A4FE-F653-3555-A530-EC1036D3CF18}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{FDF7A4FE-F653-3555-A530-EC1036D3CF18}.Debug|ARM.Build.0 = Debug|Any CPU
+		{FDF7A4FE-F653-3555-A530-EC1036D3CF18}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{FDF7A4FE-F653-3555-A530-EC1036D3CF18}.Debug|x64.Build.0 = Debug|Any CPU
+		{FDF7A4FE-F653-3555-A530-EC1036D3CF18}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{FDF7A4FE-F653-3555-A530-EC1036D3CF18}.Debug|x86.Build.0 = Debug|Any CPU
+		{FDF7A4FE-F653-3555-A530-EC1036D3CF18}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDF7A4FE-F653-3555-A530-EC1036D3CF18}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FDF7A4FE-F653-3555-A530-EC1036D3CF18}.Release|ARM.ActiveCfg = Release|Any CPU
+		{FDF7A4FE-F653-3555-A530-EC1036D3CF18}.Release|ARM.Build.0 = Release|Any CPU
+		{FDF7A4FE-F653-3555-A530-EC1036D3CF18}.Release|x64.ActiveCfg = Release|Any CPU
+		{FDF7A4FE-F653-3555-A530-EC1036D3CF18}.Release|x64.Build.0 = Release|Any CPU
+		{FDF7A4FE-F653-3555-A530-EC1036D3CF18}.Release|x86.ActiveCfg = Release|Any CPU
+		{FDF7A4FE-F653-3555-A530-EC1036D3CF18}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -273,6 +291,7 @@ Global
 		{5E635543-AB8C-4C15-BDA6-D423BE545EBE} = {1DCE243A-7652-45C9-8779-621489B87469}
 		{B83CD851-7EAB-8C00-DFE5-F66496C2CF4D} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{1A0ACD2C-B723-EFB4-460D-56A46152AB28} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{FDF7A4FE-F653-3555-A530-EC1036D3CF18} = {BFBCA122-F9F1-4A26-BD18-DFBA1A0E69D5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7FD07ECB-B4B5-4D65-8E03-10F0C97C77A9}

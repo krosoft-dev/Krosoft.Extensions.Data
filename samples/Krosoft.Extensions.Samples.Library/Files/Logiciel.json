@@ -1,14 +1,37 @@
 ﻿[
   {
+    "Id": "2a7c1a9d-6db3-4d1e-8d8b-9e8431d1b55c",
+    "Nom": "Adobe Acrobat Reader",
+    "Description": "Logiciel de lecture de fichiers PDF",
+
+    "StatutCode": 1,
+    "CreatedAt": "2023-01-01T12:00:00Z",
+    "CreatedBy": "Systeme",
+    "UpdatedBy": "Systeme",
+    "tenantId": "Adobe"
+  },
+  {
+    "Id": "4560f48d-4d86-4b1e-8b22-51c1a9e3d6ca",
+    "Nom": "Microsoft Excel",
+    "Description": "Logiciel de calcul de tableaux",
+
+    "StatutCode": 1,
+    "CreatedAt": "2023-01-01T12:00:00Z",
+    "CreatedBy": "Systeme",
+    "UpdatedBy": "Systeme",
+    "tenantId": "Microsoft"
+  },
+
+  {
     "Id": "1f39c60d-4f92-4f17-aa45-99e8f86a3b3a",
     "Nom": "Logiciel1",
     "Description": "Premier logiciel",
     "CategorieId": "2a7c1a9d-6db3-4d1e-8d8b-9e8431d1b55c",
 
     "StatutCode": 1,
-    "DateCreation": "2023-01-01T12:00:00Z",
-    "CreateurId": "Systeme",
-    "ModificateurId": "Systeme",
+    "CreatedAt": "2023-01-01T12:00:00Z",
+    "CreatedBy": "Systeme",
+    "UpdatedBy": "Systeme",
     "tenantId": "Fake_Tenant_Id"
   },
   {
@@ -18,9 +41,9 @@
     "CategorieId": "4560f48d-4d86-4b1e-8b22-51c1a9e3d6ca",
 
     "StatutCode": 2,
-    "DateCreation": "2023-02-01T12:00:00Z",
-    "CreateurId": "Systeme",
-    "ModificateurId": "Systeme",
+    "CreatedAt": "2023-02-01T12:00:00Z",
+    "CreatedBy": "Systeme",
+    "UpdatedBy": "Systeme",
     "tenantId": "Fake_Tenant_Id"
   },
   {
@@ -30,9 +53,9 @@
     "CategorieId": "789e4321-0987-4567-abcd-1234dcba5678",
 
     "StatutCode": 1,
-    "DateCreation": "2023-03-01T12:00:00Z",
-    "CreateurId": "Systeme",
-    "ModificateurId": "Systeme",
+    "CreatedAt": "2023-03-01T12:00:00Z",
+    "CreatedBy": "Systeme",
+    "UpdatedBy": "Systeme",
     "tenantId": "Fake_Tenant_Id"
   },
   {
@@ -42,9 +65,9 @@
     "CategorieId": "abcdef12-3456-7890-1234-567890abcdef",
 
     "StatutCode": 2,
-    "DateCreation": "2023-04-01T12:00:00Z",
-    "CreateurId": "Systeme",
-    "ModificateurId": "Systeme",
+    "CreatedAt": "2023-04-01T12:00:00Z",
+    "CreatedBy": "Systeme",
+    "UpdatedBy": "Systeme",
     "tenantId": "Fake_Tenant_Id"
   },
   {
@@ -54,9 +77,9 @@
     "CategorieId": "abcdef12-3456-7890-1234-567890abcdef",
 
     "StatutCode": 1,
-    "DateCreation": "2023-05-01T12:00:00Z",
-    "CreateurId": "Systeme",
-    "ModificateurId": "Systeme",
+    "CreatedAt": "2023-05-01T12:00:00Z",
+    "CreatedBy": "Systeme",
+    "UpdatedBy": "Systeme",
     "tenantId": "Fake_Tenant_Id"
   }
-] 
+]

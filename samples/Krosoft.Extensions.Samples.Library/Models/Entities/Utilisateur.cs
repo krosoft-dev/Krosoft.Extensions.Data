@@ -4,7 +4,7 @@ using Krosoft.Extensions.Samples.Library.Models.Enums;
 
 namespace Krosoft.Extensions.Samples.Library.Models.Entities;
 
-public record Utilisateur : TenantAuditableEntity
+public record Utilisateur : TenantAuditableEntity<string>
 {
     public string? Email { get; set; }
     public string? Nom { get; set; }

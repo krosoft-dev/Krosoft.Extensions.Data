@@ -16,7 +16,7 @@ using Microsoft.Extensions.DependencyInjection;
 namespace Krosoft.Extensions.Data.EntityFramework.InMemory.Tests.Functional;
 
 [TestClass]
-[TestSubject(typeof(KrosoftTenantContext))]
+[TestSubject(typeof(KrosoftTenantContext<>))]
 public class KrosoftTenantContextTests : BaseTest
 {
     private IReadRepository<Logiciel> _repository = null!;
@@ -25,7 +25,7 @@ public class KrosoftTenantContextTests : BaseTest
     {
         services.AddLoggingExt();
         services.AddRepositories();
-        services.AddScoped<ITenantDbContextProvider, FakeTenantDbContextProvider>();
+        services.AddScoped<ITenantDbContextProvider<string>, FakeTenantDbContextProvider>();
         services.AddDbContextInMemory<SampleKrosoftTenantContext>(true);
         services.AddSeedService<SampleKrosoftTenantContext, SampleSeedService<SampleKrosoftTenantContext>>();
     }

@@ -2,7 +2,7 @@
 
 namespace Krosoft.Extensions.Data.EntityFramework.Models;
 
-public interface ITenantDbContextSettings<T> : IDbContextSettings<T> where T : KrosoftContext
+public interface ITenantDbContextSettings<T, out TTenantId> : IDbContextSettings<T> where T : KrosoftContext
 {
-    string TenantId { get; }
+    TTenantId TenantId { get; }
 }

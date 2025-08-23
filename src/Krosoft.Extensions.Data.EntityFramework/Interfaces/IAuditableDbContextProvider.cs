@@ -2,6 +2,6 @@
 
 public interface IAuditableDbContextProvider
 {
-    DateTime GetNow();
-    string GetUtilisateurId();
+    DateTimeOffset GetNow();
+    string GetUserId();
 }
