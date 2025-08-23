@@ -3,7 +3,6 @@ using Krosoft.Extensions.Data.EntityFramework.InMemory.Extensions;
 using Krosoft.Extensions.Data.EntityFramework.Interfaces;
 using Krosoft.Extensions.Data.EntityFramework.Models;
 using Krosoft.Extensions.Data.EntityFramework.Services;
-
 using Krosoft.Extensions.Samples.DotNet9.Api.Data;
 using Krosoft.Extensions.Samples.Library.Models.Entities;
 using Krosoft.Extensions.Samples.Library.Models.Queries;

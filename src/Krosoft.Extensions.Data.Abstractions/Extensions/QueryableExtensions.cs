@@ -1,10 +1,10 @@
-﻿using System.Linq.Expressions;
-using System.Reflection;
-using Krosoft.Extensions.Core.Models;
+﻿using Krosoft.Extensions.Core.Models;
 using Krosoft.Extensions.Core.Models.Exceptions;
 using Krosoft.Extensions.Core.Tools;
 using Krosoft.Extensions.Data.Abstractions.Helpers;
 using LinqKit;
+using System.Linq.Expressions;
+using System.Reflection;
 
 namespace Krosoft.Extensions.Data.Abstractions.Extensions;
 

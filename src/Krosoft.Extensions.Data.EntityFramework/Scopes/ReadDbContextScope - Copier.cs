@@ -11,7 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Krosoft.Extensions.Data.EntityFramework.Scopes;
 
-internal class ReadDbContextScope<T, TTenantId> : IReadDbContextScope where T : KrosoftContext
+internal class ReadDbContextScope<T> : IReadDbContextScope where T : KrosoftContext
 {
     private readonly IServiceScope _serviceScope;
     protected readonly T DbContext;
@@ -53,42 +53,6 @@ internal class ReadDbContextScope<T, TTenantId> : IReadDbContextScope where T : 
             if (krosoftContext == null)
             {
                 throw new KrosoftTechnicalException($"Impossible d'instancer le dbcontext de type {typeof(T).Name} avec un settings de type {typeof(IAuditableDbContextSettings<T>).Name}");
-            }
-
-            return krosoftContext;
-        }
-
-        if (dbContextSettings is ITenantDbContextSettings<T, TTenantId> tenantDbContextSettings)
-        {
-            var tenantDbContextProvider = new TenantDbContextProvider<TTenantId>(tenantDbContextSettings.TenantId);
-
-            var krosoftContext = (T?)Activator.CreateInstance(typeof(T),
-                                                              serviceScope.ServiceProvider.GetRequiredService<DbContextOptions>(),
-                                                              tenantDbContextProvider);
-
-            if (krosoftContext == null)
-            {
-                throw new KrosoftTechnicalException($"Impossible d'instancer le dbcontext de type {typeof(T).Name} avec un settings de type {typeof(ITenantDbContextSettings<T, TTenantId>).Name}");
-            }
-
-            return krosoftContext;
-        }
-
-        if (dbContextSettings is ITenantAuditableDbContextSettings<T, TTenantId> tenantAuditableDbContextSettings)
-        {
-            var tenantDbContextProvider = new TenantDbContextProvider<TTenantId>(tenantAuditableDbContextSettings.TenantId);
-
-            var auditableDbContextProvider = new AuditableDbContextProvider(tenantAuditableDbContextSettings.Now,
-                                                                            tenantAuditableDbContextSettings.UserId);
-
-            var krosoftContext = (T?)Activator.CreateInstance(typeof(T),
-                                                              serviceScope.ServiceProvider.GetRequiredService<DbContextOptions>(),
-                                                              tenantDbContextProvider,
-                                                              auditableDbContextProvider);
-
-            if (krosoftContext == null)
-            {
-                throw new KrosoftTechnicalException($"Impossible d'instancer le dbcontext de type {typeof(T).Name} avec un settings de type {typeof(ITenantAuditableDbContextSettings<T, TTenantId>).Name}");
             }
 
             return krosoftContext;

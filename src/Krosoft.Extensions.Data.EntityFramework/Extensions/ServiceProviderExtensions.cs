@@ -8,15 +8,15 @@ namespace Krosoft.Extensions.Data.EntityFramework.Extensions;
 
 public static class ServiceProviderExtensions
 {
-    public static IDbContextScope CreateDbContextScope<T>(this IServiceProvider provider,
-                                                          string tenantId,
-                                                          DateTime now,
-                                                          string utilisateurId)
-        where T : KrosoftTenantAuditableContext
+    public static IDbContextScope CreateDbContextScope<T, TTenantId>(this IServiceProvider provider,
+                                                                     TTenantId tenantId,
+                                                                     DateTime now,
+                                                                     string userId)
+        where T : KrosoftTenantAuditableContext<TTenantId>
         => CreateDbContextScope(provider,
-                                new TenantAuditableDbContextSettings<T>(tenantId,
-                                                                        now,
-                                                                        utilisateurId));
+                                new TenantAuditableDbContextSettings<T, TTenantId>(tenantId,
+                                                                                   now,
+                                                                                   userId));
 
     public static IDbContextScope CreateDbContextScope<T>(this IServiceProvider provider,
                                                           IDbContextSettings<T> dbContextSettings)

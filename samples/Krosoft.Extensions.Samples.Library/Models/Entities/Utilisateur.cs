@@ -1,10 +1,9 @@
 ﻿using Krosoft.Extensions.Core.Helpers;
-using Krosoft.Extensions.Data.Abstractions.Models;
 using Krosoft.Extensions.Samples.Library.Models.Enums;
 
 namespace Krosoft.Extensions.Samples.Library.Models.Entities;
 
-public record Utilisateur : TenantAuditableEntity
+public record Utilisateur : TenantEntity
 {
     public string? Email { get; set; }
     public string? Nom { get; set; }

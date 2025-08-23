@@ -1,6 +1,6 @@
 ﻿namespace Krosoft.Extensions.Data.EntityFramework.Interfaces;
 
-public interface ITenantDbContextProvider
+public interface ITenantDbContextProvider<out T>
 {
-    string GetTenantId();
+    T GetTenantId();
 }

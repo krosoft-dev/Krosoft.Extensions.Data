@@ -6,9 +6,9 @@
     "CategorieId": "2a7c1a9d-6db3-4d1e-8d8b-9e8431d1b55c",
 
     "StatutCode": 1,
-    "DateCreation": "2023-01-01T12:00:00Z",
-    "CreateurId": "Systeme",
-    "ModificateurId": "Systeme",
+    "CreatedAt": "2023-01-01T12:00:00Z",
+    "CreatedBy": "Systeme",
+    "UpdatedBy": "Systeme",
     "tenantId": "Fake_Tenant_Id"
   },
   {
@@ -18,9 +18,9 @@
     "CategorieId": "4560f48d-4d86-4b1e-8b22-51c1a9e3d6ca",
 
     "StatutCode": 2,
-    "DateCreation": "2023-02-01T12:00:00Z",
-    "CreateurId": "Systeme",
-    "ModificateurId": "Systeme",
+    "CreatedAt": "2023-02-01T12:00:00Z",
+    "CreatedBy": "Systeme",
+    "UpdatedBy": "Systeme",
     "tenantId": "Fake_Tenant_Id"
   },
   {
@@ -30,9 +30,9 @@
     "CategorieId": "789e4321-0987-4567-abcd-1234dcba5678",
 
     "StatutCode": 1,
-    "DateCreation": "2023-03-01T12:00:00Z",
-    "CreateurId": "Systeme",
-    "ModificateurId": "Systeme",
+    "CreatedAt": "2023-03-01T12:00:00Z",
+    "CreatedBy": "Systeme",
+    "UpdatedBy": "Systeme",
     "tenantId": "Fake_Tenant_Id"
   },
   {
@@ -42,9 +42,9 @@
     "CategorieId": "abcdef12-3456-7890-1234-567890abcdef",
 
     "StatutCode": 2,
-    "DateCreation": "2023-04-01T12:00:00Z",
-    "CreateurId": "Systeme",
-    "ModificateurId": "Systeme",
+    "CreatedAt": "2023-04-01T12:00:00Z",
+    "CreatedBy": "Systeme",
+    "UpdatedBy": "Systeme",
     "tenantId": "Fake_Tenant_Id"
   },
   {
@@ -54,9 +54,9 @@
     "CategorieId": "abcdef12-3456-7890-1234-567890abcdef",
 
     "StatutCode": 1,
-    "DateCreation": "2023-05-01T12:00:00Z",
-    "CreateurId": "Systeme",
-    "ModificateurId": "Systeme",
+    "CreatedAt": "2023-05-01T12:00:00Z",
+    "CreatedBy": "Systeme",
+    "UpdatedBy": "Systeme",
     "tenantId": "Fake_Tenant_Id"
   }
 ] 

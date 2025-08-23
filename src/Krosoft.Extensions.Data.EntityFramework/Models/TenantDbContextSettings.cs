@@ -2,12 +2,13 @@
 
 namespace Krosoft.Extensions.Data.EntityFramework.Models;
 
-public record TenantDbContextSettings<T> : ITenantDbContextSettings<T> where T : KrosoftTenantContext
+public record TenantDbContextSettings<T, TTenantId> : ITenantDbContextSettings<T, TTenantId>
+    where T : KrosoftTenantContext<TTenantId>
 {
-    public TenantDbContextSettings(string tenantId)
+    public TenantDbContextSettings(TTenantId tenantId)
     {
         TenantId = tenantId;
     }
 
-    public string TenantId { get; }
+    public TTenantId TenantId { get; }
 }

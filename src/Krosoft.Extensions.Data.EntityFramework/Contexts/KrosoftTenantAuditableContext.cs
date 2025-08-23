@@ -6,13 +6,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Krosoft.Extensions.Data.EntityFramework.Contexts;
 
-public abstract class KrosoftTenantAuditableContext : KrosoftContext
+public abstract class KrosoftTenantAuditableContext<TTenantId> : KrosoftContext
 {
     /// <summary>
     /// Applying BaseEntity rules to all entities that inherit from it.
     /// Define MethodInfo member that is used when model is built.
     /// </summary>
-    private static readonly MethodInfo ConfigureAuditableMethod = typeof(KrosoftTenantAuditableContext)
+    private static readonly MethodInfo ConfigureAuditableMethod = typeof(KrosoftTenantAuditableContext<>)
                                                                   .GetMethods(BindingFlags.Public | BindingFlags.Instance)
                                                                   .Single(t => t.IsGenericMethod && t.Name == nameof(ConfigureAuditable));
 
@@ -20,16 +20,15 @@ public abstract class KrosoftTenantAuditableContext : KrosoftContext
     /// Applying BaseEntity rules to all entities that inherit from it.
     /// Define MethodInfo member that is used when model is built.
     /// </summary>
-    private static readonly MethodInfo ConfigureTenantMethod = typeof(KrosoftTenantAuditableContext)
+    private static readonly MethodInfo ConfigureTenantMethod = typeof(KrosoftTenantAuditableContext<>)
                                                                .GetMethods(BindingFlags.Public | BindingFlags.Instance)
                                                                .Single(t => t.IsGenericMethod && t.Name == nameof(ConfigureTenant));
 
     private readonly IAuditableDbContextProvider _auditableDbContextProvider;
-
-    private readonly ITenantDbContextProvider _tenantDbContextProvider;
+    private readonly ITenantDbContextProvider<TTenantId> _tenantDbContextProvider;
 
     protected KrosoftTenantAuditableContext(DbContextOptions options,
-                                            ITenantDbContextProvider tenantDbContextProvider,
+                                            ITenantDbContextProvider<TTenantId> tenantDbContextProvider,
                                             IAuditableDbContextProvider auditableDbContextProvider) : base(options)
     {
         _auditableDbContextProvider = auditableDbContextProvider;
@@ -43,16 +42,16 @@ public abstract class KrosoftTenantAuditableContext : KrosoftContext
     public void ConfigureAuditable<T>(ModelBuilder builder) where T : class, IAuditable
     {
         builder.Entity<T>()
-               .Property(t => t.ModificateurId)
+               .Property(t => t.UpdatedBy)
                .IsRequired();
         builder.Entity<T>()
-               .Property(t => t.ModificateurDate)
+               .Property(t => t.UpdatedAt)
                .IsRequired();
         builder.Entity<T>()
-               .Property(t => t.CreateurId)
+               .Property(t => t.CreatedBy)
                .IsRequired();
         builder.Entity<T>()
-               .Property(t => t.CreateurDate)
+               .Property(t => t.CreatedAt)
                .IsRequired();
     }
 
@@ -60,7 +59,7 @@ public abstract class KrosoftTenantAuditableContext : KrosoftContext
     /// This method is called for every loaded entity type in OnModelCreating method.
     /// Here type is known through generic parameter and we can use EF Core methods.
     /// </summary>
-    public void ConfigureTenant<T>(ModelBuilder builder) where T : class, ITenant
+    public void ConfigureTenant<T>(ModelBuilder builder) where T : class, ITenant<TTenantId>
     {
         builder.Entity<T>()
                .HasIndex(p => p.TenantId);
@@ -69,10 +68,10 @@ public abstract class KrosoftTenantAuditableContext : KrosoftContext
                .Property(t => t.TenantId)
                .IsRequired();
 
-        builder.Entity<T>().HasQueryFilter(e => e.TenantId == _tenantDbContextProvider.GetTenantId());
+        builder.Entity<T>().HasQueryFilter(e => e.TenantId != null && e.TenantId.Equals(_tenantDbContextProvider.GetTenantId()));
     }
 
-    protected override IEnumerable<Type> GetTypes() => [typeof(ITenant), typeof(IAuditable)];
+    protected override IEnumerable<Type> GetTypes() => [typeof(ITenant<TTenantId>), typeof(IAuditable)];
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -89,7 +88,7 @@ public abstract class KrosoftTenantAuditableContext : KrosoftContext
                 method.Invoke(this, new object[] { modelBuilder });
             }
 
-            if (type.GetInterfaces().Contains(typeof(ITenant)))
+            if (type.GetInterfaces().Contains(typeof(ITenant<TTenantId>)))
             {
                 var method = ConfigureTenantMethod.MakeGenericMethod(type);
                 method.Invoke(this, new object[] { modelBuilder });
@@ -105,13 +104,13 @@ public abstract class KrosoftTenantAuditableContext : KrosoftContext
             ChangeTracker.DetectChanges();
 
             var now = _auditableDbContextProvider.GetNow();
-            var utilisateurId = _auditableDbContextProvider.GetUtilisateurId();
+            var userId = _auditableDbContextProvider.GetUserId();
 
-            ChangeTracker.ProcessModificationAuditable(now, utilisateurId);
-            ChangeTracker.ProcessCreationAuditable(now, utilisateurId);
+            ChangeTracker.ProcessModificationAuditable(now, userId);
+            ChangeTracker.ProcessCreationAuditable(now, userId);
         }
 
-        var useTenant = ChangeTracker.Entries<ITenant>().Any();
+        var useTenant = ChangeTracker.Entries<ITenant<TTenantId>>().Any();
         if (useTenant)
         {
             ChangeTracker.DetectChanges();

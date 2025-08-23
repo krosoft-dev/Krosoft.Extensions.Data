@@ -6,20 +6,20 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Krosoft.Extensions.Data.EntityFramework.Contexts;
 
-public abstract class KrosoftTenantContext : KrosoftContext
+public abstract class KrosoftTenantContext<TTenantId> : KrosoftContext
 {
     /// <summary>
     /// Applying BaseEntity rules to all entities that inherit from it.
     /// Define MethodInfo member that is used when model is built.
     /// </summary>
-    private static readonly MethodInfo ConfigureTenantMethod = typeof(KrosoftTenantContext)
+    private static readonly MethodInfo ConfigureTenantMethod = typeof(KrosoftTenantContext<TTenantId>)
                                                                .GetMethods(BindingFlags.Public | BindingFlags.Instance)
                                                                .Single(t => t.IsGenericMethod && t.Name == nameof(ConfigureTenant));
 
-    private readonly ITenantDbContextProvider _tenantDbContextProvider;
+    private readonly ITenantDbContextProvider<TTenantId> _tenantDbContextProvider;
 
     protected KrosoftTenantContext(DbContextOptions options,
-                                   ITenantDbContextProvider tenantDbContextProvider) : base(options)
+                                   ITenantDbContextProvider<TTenantId> tenantDbContextProvider) : base(options)
     {
         _tenantDbContextProvider = tenantDbContextProvider;
     }
@@ -28,7 +28,8 @@ public abstract class KrosoftTenantContext : KrosoftContext
     /// This method is called for every loaded entity type in OnModelCreating method.
     /// Here type is known through generic parameter and we can use EF Core methods.
     /// </summary>
-    public void ConfigureTenant<T>(ModelBuilder builder) where T : class, ITenant
+    public void ConfigureTenant<T>(ModelBuilder builder)
+        where T : class, ITenant<TTenantId>
     {
         builder.Entity<T>()
                .HasIndex(p => p.TenantId);
@@ -37,10 +38,10 @@ public abstract class KrosoftTenantContext : KrosoftContext
                .Property(t => t.TenantId)
                .IsRequired();
 
-        builder.Entity<T>().HasQueryFilter(e => e.TenantId == _tenantDbContextProvider.GetTenantId());
+        builder.Entity<T>().HasQueryFilter(e => e.TenantId != null && e.TenantId.Equals(_tenantDbContextProvider.GetTenantId()));
     }
 
-    protected override IEnumerable<Type> GetTypes() => [typeof(ITenant)];
+    protected override IEnumerable<Type> GetTypes() => [typeof(ITenant<>)];
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -51,7 +52,7 @@ public abstract class KrosoftTenantContext : KrosoftContext
         {
             //Console.WriteLine(type.FullName); //Debug.
 
-            if (type.GetInterfaces().Contains(typeof(ITenant)))
+            if (type.GetInterfaces().Contains(typeof(ITenant<>)))
             {
                 var method = ConfigureTenantMethod.MakeGenericMethod(type);
                 method.Invoke(this, new object[] { modelBuilder });
@@ -61,7 +62,7 @@ public abstract class KrosoftTenantContext : KrosoftContext
 
     protected override void OverrideEntities()
     {
-        var useTenant = ChangeTracker.Entries<ITenant>().Any();
+        var useTenant = ChangeTracker.Entries<ITenant<TTenantId>>().Any();
         if (useTenant)
         {
             ChangeTracker.DetectChanges();

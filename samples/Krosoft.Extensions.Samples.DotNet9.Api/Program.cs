@@ -17,7 +17,7 @@ var currentAssembly = Assembly.GetExecutingAssembly();
 
 var assemblies = new[]
 {
-    currentAssembly, 
+    currentAssembly
 };
 
 var builder = WebApplication.CreateBuilder(args);
@@ -28,15 +28,12 @@ builder.Services
        .AddWebApi(builder.Configuration, assemblies)
        //CQRS.
        .AddBehaviors(options => options.AddLogging()
-                                       .AddValidations()
-                                   )
+                                       .AddValidations())
        //Swagger.
        .AddSwagger(currentAssembly, options => options.AddHealthChecks()
                                                       .AddGlobalResponses()
                                                       .AddSecurityBearer()
                                                       .AddSecurityApiKey())
- 
-        
 
 //Data.
        .AddRepositories()
@@ -45,29 +42,20 @@ builder.Services
 //.AddDbContextPostgreSql<KrosoftExtensionTenantContext>(builder.Configuration);
        .AddSeedService<SampleKrosoftContext, SampleKrosoftContextSeedService>()
 
- 
-
- 
-
 //Autres
-     
        .AddHealthChecks()
        .AddCheck("Test_Endpoint", () => HealthCheckResult.Healthy())
-   
        .AddDbContextCheck<SampleKrosoftContext>("SampleKrosoftContext")
     ;
 
 var app = builder.Build();
 app.UseWebApi(builder.Environment, builder.Configuration,
-              x => x
-                    .UseHealthChecksExt(builder.Environment),
-              endpoints => endpoints.MapHealthChecksExt())
-   .UseSwaggerExt()
-   ;
+              x => x.UseHealthChecksExt(builder.Environment), endpoints => endpoints.MapHealthChecksExt())
+   .UseSwaggerExt();
 
 await app
-         .AddEndpoints(currentAssembly)
-         .RunAsync();
+      .AddEndpoints(currentAssembly)
+      .RunAsync();
 
 namespace Krosoft.Extensions.Samples.DotNet9.Api
 {

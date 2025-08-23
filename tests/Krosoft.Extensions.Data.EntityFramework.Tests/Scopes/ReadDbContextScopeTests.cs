@@ -75,7 +75,7 @@ public class ReadDbContextScopeTests : BaseTest
         void GetServices(IServiceCollection services)
         {
             services.AddRepositories();
-            services.AddScoped<ITenantDbContextProvider, FakeTenantDbContextProvider>();
+            services.AddScoped<ITenantDbContextProvider<string>, FakeTenantDbContextProvider>();
             services.AddScoped<IAuditableDbContextProvider, FakeAuditableDbContextProvider>();
             services.AddDbContextInMemory<SampleKrosoftTenantAuditableContext>(true);
             services.AddSeedService<SampleKrosoftTenantAuditableContext, SampleSeedService<SampleKrosoftTenantAuditableContext>>();
@@ -84,9 +84,9 @@ public class ReadDbContextScopeTests : BaseTest
         using (var scope = CreateServiceCollection(GetServices))
         {
             var tenantId = new FakeTenantDbContextProvider().GetTenantId();
-            var dbContextSettings = new TenantAuditableDbContextSettings<SampleKrosoftTenantAuditableContext>(tenantId,
-                                                                                                              DateTime.Now,
-                                                                                                              "UtilisateurId");
+            var dbContextSettings = new TenantAuditableDbContextSettings<SampleKrosoftTenantAuditableContext, string>(tenantId,
+                                                                                                                      DateTime.Now,
+                                                                                                                      "UtilisateurId");
             using (var contextScope = new ReadDbContextScope<SampleKrosoftTenantAuditableContext>(scope.CreateScope(), dbContextSettings))
             {
                 await CheckResults(contextScope);
@@ -100,7 +100,7 @@ public class ReadDbContextScopeTests : BaseTest
         void GetServices(IServiceCollection services)
         {
             services.AddRepositories();
-            services.AddScoped<ITenantDbContextProvider, FakeTenantDbContextProvider>();
+            services.AddScoped<ITenantDbContextProvider<string>, FakeTenantDbContextProvider>();
             services.AddDbContextInMemory<SampleKrosoftTenantContext>(true);
             services.AddSeedService<SampleKrosoftTenantContext, SampleSeedService<SampleKrosoftTenantContext>>();
         }
@@ -108,7 +108,7 @@ public class ReadDbContextScopeTests : BaseTest
         using (var scope = CreateServiceCollection(GetServices))
         {
             var tenantId = new FakeTenantDbContextProvider().GetTenantId();
-            var dbContextSettings = new TenantDbContextSettings<SampleKrosoftTenantContext>(tenantId);
+            var dbContextSettings = new TenantDbContextSettings<SampleKrosoftTenantContext, string>(tenantId);
             using (var contextScope = new ReadDbContextScope<SampleKrosoftTenantContext>(scope.CreateScope(), dbContextSettings))
             {
                 await CheckResults(contextScope);

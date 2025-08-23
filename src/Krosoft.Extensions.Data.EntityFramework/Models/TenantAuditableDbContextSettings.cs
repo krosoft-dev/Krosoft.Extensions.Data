@@ -2,19 +2,19 @@
 
 namespace Krosoft.Extensions.Data.EntityFramework.Models;
 
-public record TenantAuditableDbContextSettings<T> : ITenantAuditableDbContextSettings<T>
-    where T : KrosoftTenantAuditableContext
+public record TenantAuditableDbContextSettings<T, TTenantId> : ITenantAuditableDbContextSettings<T, TTenantId>
+    where T : KrosoftTenantAuditableContext<TTenantId>
 {
-    public TenantAuditableDbContextSettings(string tenantId, DateTime now, string utilisateurId)
+    public TenantAuditableDbContextSettings(TTenantId tenantId, DateTime now, string userId)
     {
         Now = now;
-        UtilisateurId = utilisateurId;
+        UserId = userId;
         TenantId = tenantId;
     }
 
-    public DateTime Now { get; }
+    public DateTimeOffset Now { get; }
 
-    public string TenantId { get; }
+    public TTenantId TenantId { get; }
 
-    public string UtilisateurId { get; }
+    public string UserId { get; }
 }

@@ -44,7 +44,7 @@ public abstract class DesignTimeDbContextFactory<TDbContext> : IDesignTimeDbCont
 
     protected virtual void ConfigureServices(IServiceCollection services)
     {
-        services.AddScoped<ITenantDbContextProvider, FakeTenantDbContextProvider>();
+        services.AddScoped<ITenantDbContextProvider<string>, FakeTenantDbContextProvider>();
         services.AddScoped<IAuditableDbContextProvider, FakeAuditableDbContextProvider>();
     }
 

@@ -2,19 +2,14 @@
 
 namespace Krosoft.Extensions.Data.EntityFramework.Services;
 
-public class TenantDbContextProvider : ITenantDbContextProvider
+public class TenantDbContextProvider<T> : ITenantDbContextProvider<T>
 {
-    private readonly string _tenantId;
+    private readonly T _tenantId;
 
-    public TenantDbContextProvider()
-    {
-        _tenantId = "";
-    }
-
-    public TenantDbContextProvider(string tenantId)
+    public TenantDbContextProvider(T tenantId)
     {
         _tenantId = tenantId;
     }
 
-    public string GetTenantId() => _tenantId;
+    public T GetTenantId() => _tenantId;
 }
