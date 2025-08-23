@@ -5,16 +5,16 @@ namespace Krosoft.Extensions.Data.EntityFramework.Models;
 public record TenantAuditableDbContextSettings<T> : ITenantAuditableDbContextSettings<T>
     where T : KrosoftTenantAuditableContext
 {
-    public TenantAuditableDbContextSettings(string tenantId, DateTime now, string utilisateurId)
+    public TenantAuditableDbContextSettings(string tenantId, DateTimeOffset now, string userId)
     {
         Now = now;
-        UtilisateurId = utilisateurId;
+        UserId = userId;
         TenantId = tenantId;
     }
 
-    public DateTime Now { get; }
+    public DateTimeOffset Now { get; }
 
     public string TenantId { get; }
 
-    public string UtilisateurId { get; }
+    public string UserId { get; }
 }

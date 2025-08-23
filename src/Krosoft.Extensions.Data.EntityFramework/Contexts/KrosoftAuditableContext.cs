@@ -23,16 +23,16 @@ public abstract class KrosoftAuditableContext : KrosoftContext
     public void ConfigureAuditable<T>(ModelBuilder builder) where T : class, IAuditable
     {
         builder.Entity<T>()
-               .Property(t => t.ModificateurId)
+               .Property(t => t.UpdatedBy)
                .IsRequired();
         builder.Entity<T>()
-               .Property(t => t.ModificateurDate)
+               .Property(t => t.UpdatedAt)
                .IsRequired();
         builder.Entity<T>()
-               .Property(t => t.CreateurId)
+               .Property(t => t.CreatedBy)
                .IsRequired();
         builder.Entity<T>()
-               .Property(t => t.CreateurDate)
+               .Property(t => t.CreatedAt)
                .IsRequired();
     }
 
@@ -63,10 +63,10 @@ public abstract class KrosoftAuditableContext : KrosoftContext
             ChangeTracker.DetectChanges();
 
             var now = _auditableDbContextProvider.GetNow();
-            var utilisateurId = _auditableDbContextProvider.GetUtilisateurId();
+            var userId = _auditableDbContextProvider.GetUserId();
 
-            ChangeTracker.ProcessModificationAuditable(now, utilisateurId);
-            ChangeTracker.ProcessCreationAuditable(now, utilisateurId);
+            ChangeTracker.ProcessAuditableOnAdded(now, userId);
+            ChangeTracker.ProcessAuditableOnModified(now, userId);
         }
     }
 }

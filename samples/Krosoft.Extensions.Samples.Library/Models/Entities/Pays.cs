@@ -1,4 +1,5 @@
-﻿using Krosoft.Extensions.Data.Abstractions.Models;
+﻿using System;
+using Krosoft.Extensions.Data.Abstractions.Models;
 
 namespace Krosoft.Extensions.Samples.Library.Models.Entities;
 

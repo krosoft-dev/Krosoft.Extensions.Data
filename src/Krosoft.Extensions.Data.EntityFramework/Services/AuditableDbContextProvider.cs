@@ -4,22 +4,21 @@ namespace Krosoft.Extensions.Data.EntityFramework.Services;
 
 public class AuditableDbContextProvider : IAuditableDbContextProvider
 {
-    private readonly DateTime _now;
-    private readonly string _utilisateurId;
+    private readonly DateTimeOffset _now;
+    private readonly string _userId;
 
     public AuditableDbContextProvider()
     {
-        _now = DateTime.MinValue;
-        _utilisateurId = string.Empty;
+        _now = DateTimeOffset.MinValue;
+        _userId = string.Empty;
     }
 
-    public AuditableDbContextProvider(DateTime now, string utilisateurId)
+    public AuditableDbContextProvider(DateTimeOffset now, string userId)
     {
         _now = now;
-        _utilisateurId = utilisateurId;
+        _userId = userId;
     }
 
-    public DateTime GetNow() => _now;
-
-    public string GetUtilisateurId() => _utilisateurId;
+    public DateTimeOffset GetNow() => _now;
+    public string GetUserId() => _userId;
 }

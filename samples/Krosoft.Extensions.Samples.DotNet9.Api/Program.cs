@@ -1,12 +1,10 @@
 using System.Reflection;
+using Krosoft.Extensions.Core.Extensions;
 using Krosoft.Extensions.Cqrs.Behaviors.Extensions;
 using Krosoft.Extensions.Cqrs.Behaviors.Validations.Extensions;
 using Krosoft.Extensions.Data.EntityFramework.Extensions;
 using Krosoft.Extensions.Data.EntityFramework.InMemory.Extensions;
-using Krosoft.Extensions.Options.Extensions;
 using Krosoft.Extensions.Samples.DotNet9.Api.Data;
-using Krosoft.Extensions.Samples.DotNet9.Api.Features.Models;
-using Krosoft.Extensions.Samples.DotNet9.Api.Shared.Services;
 using Krosoft.Extensions.WebApi.Extensions;
 using Krosoft.Extensions.WebApi.HealthChecks.Extensions;
 using Krosoft.Extensions.WebApi.Swagger.Extensions;
@@ -17,57 +15,45 @@ var currentAssembly = Assembly.GetExecutingAssembly();
 
 var assemblies = new[]
 {
-    currentAssembly, 
+    currentAssembly
 };
 
 var builder = WebApplication.CreateBuilder(args);
 
 //Web API.
 builder.Services
-       .AddOptionsValidator<AppSettings, AppSettingsValidateOptions>(builder.Configuration)
+       .AddDateTimeService()
        .AddWebApi(builder.Configuration, assemblies)
        //CQRS.
        .AddBehaviors(options => options.AddLogging()
-                                       .AddValidations()
-                                   )
+                                       .AddValidations())
        //Swagger.
        .AddSwagger(currentAssembly, options => options.AddHealthChecks()
                                                       .AddGlobalResponses()
                                                       .AddSecurityBearer()
                                                       .AddSecurityApiKey())
- 
-        
 
 //Data.
        .AddRepositories()
-       .AddDbContextInMemory<SampleKrosoftContext>(false)
-//.AddDbContextSqlite<SampleKrosoftContext>(builder.Configuration); 
+       .AddDbContextInMemory<SampleKrosoftTenantAuditableContext>(false)
+//.AddDbContextSqlite<SampleKrosoftTenantAuditableContext>(builder.Configuration); 
 //.AddDbContextPostgreSql<KrosoftExtensionTenantContext>(builder.Configuration);
-       .AddSeedService<SampleKrosoftContext, SampleKrosoftContextSeedService>()
-
- 
-
- 
+       //.AddSeedService<SampleKrosoftTenantAuditableContext, SampleKrosoftContextSeedService>()
 
 //Autres
-     
        .AddHealthChecks()
        .AddCheck("Test_Endpoint", () => HealthCheckResult.Healthy())
-   
-       .AddDbContextCheck<SampleKrosoftContext>("SampleKrosoftContext")
+       .AddDbContextCheck<SampleKrosoftTenantAuditableContext>("SampleKrosoftTenantAuditableContext")
     ;
 
 var app = builder.Build();
 app.UseWebApi(builder.Environment, builder.Configuration,
-              x => x
-                    .UseHealthChecksExt(builder.Environment),
-              endpoints => endpoints.MapHealthChecksExt())
-   .UseSwaggerExt()
-   ;
+              x => x.UseHealthChecksExt(builder.Environment), endpoints => endpoints.MapHealthChecksExt())
+   .UseSwaggerExt();
 
 await app
-         .AddEndpoints(currentAssembly)
-         .RunAsync();
+      .AddEndpoints(currentAssembly)
+      .RunAsync();
 
 namespace Krosoft.Extensions.Samples.DotNet9.Api
 {
