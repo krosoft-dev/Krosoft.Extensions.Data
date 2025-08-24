@@ -8,10 +8,10 @@
 		<DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
 	</PropertyGroup>
 	<ItemGroup>
-		<PackageReference Include="Krosoft.Extensions.Cqrs.Behaviors" Version="2025.8.23.2337" />
-		<PackageReference Include="Krosoft.Extensions.Cqrs.Behaviors.Validations" Version="2025.8.23.2336" /> 
+		<PackageReference Include="Krosoft.Extensions.Cqrs.Behaviors" Version="2025.8.24.2482" />
+		<PackageReference Include="Krosoft.Extensions.Cqrs.Behaviors.Validations" Version="2025.8.24.2482" /> 
 		<PackageReference Include="Krosoft.Extensions.Mapping" Version="2025.8.22.2207" />
-		<PackageReference Include="Krosoft.Extensions.WebApi" Version="2025.8.23.2366" />
+		<PackageReference Include="Krosoft.Extensions.WebApi" Version="2025.8.24.2492" />
  		<PackageReference Include="Krosoft.Extensions.WebApi.Swagger.HealthChecks" Version="2025.8.23.2364" />
 	 		 	<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.22.1" />
 		<PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore" Version="9.0.8" />
