@@ -2,7 +2,6 @@
   <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
   </PropertyGroup>
- 
   <ItemGroup>
     <None Remove="Files\Categorie.json" />
     <None Remove="Files\Langue.json" />
@@ -21,14 +20,12 @@
     <EmbeddedResource Include="Files\sample1.pdf" />
     <EmbeddedResource Include="Files\sample2.pdf" />
   </ItemGroup>
-  <ItemGroup> 
+  <ItemGroup>
     <PackageReference Include="JetBrains.Annotations" Version="2025.2.2" />
     <PackageReference Include="Krosoft.Extensions.Cqrs" Version="2025.9.10.2966" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="Bogus" Version="35.6.3" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\Krosoft.Extensions.Data.Abstractions\Krosoft.Extensions.Data.Abstractions.csproj" />
   </ItemGroup>
- 
 </Project>
