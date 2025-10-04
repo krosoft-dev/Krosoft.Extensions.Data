@@ -11,7 +11,7 @@
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="LinqKit.Core" Version="1.2.8" />
-		<PackageReference Include="Krosoft.Extensions.Testing" Version="2025.9.30.3353" />
+		<PackageReference Include="Krosoft.Extensions.Testing" Version="2025.10.4.3456" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\..\samples\Krosoft.Extensions.Samples.DotNet9.Api\Krosoft.Extensions.Samples.DotNet9.Api.csproj" />
