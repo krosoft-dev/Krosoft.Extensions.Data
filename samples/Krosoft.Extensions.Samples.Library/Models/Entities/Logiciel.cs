@@ -1,5 +1,4 @@
-﻿using System;
-using Krosoft.Extensions.Data.Abstractions.Models;
+﻿using Krosoft.Extensions.Data.Abstractions.Models;
 using Krosoft.Extensions.Samples.Library.Models.Enums;
 
 namespace Krosoft.Extensions.Samples.Library.Models.Entities;
@@ -12,4 +11,16 @@ public record Logiciel : TenantAuditableEntity
     public Guid CategorieId { get; set; }
     public Categorie? Categorie { get; set; }
     public StatutCode StatutCode { get; set; }
+    public Groupe? Groupe { get; set; }
+    public Guid? GroupeId { get; set; }
+}
+ 
+
+public record Groupe : Entity
+{
+    public Guid Id { get; set; }
+    public string? Name { get; set; }
+    public DateTimeOffset CreatedAt { get; set; }
+    public DateTimeOffset UpdatedAt { get; set; }
+    public IEnumerable<Logiciel> Logiciels { get; set; } = new List<Logiciel>();
 }

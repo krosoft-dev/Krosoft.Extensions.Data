@@ -2,8 +2,8 @@ using System.Reflection;
 using Krosoft.Extensions.Core.Extensions;
 using Krosoft.Extensions.Cqrs.Behaviors.Extensions;
 using Krosoft.Extensions.Cqrs.Behaviors.Validations.Extensions;
-using Krosoft.Extensions.Data.EntityFramework.Extensions;
-using Krosoft.Extensions.Data.EntityFramework.InMemory.Extensions;
+using Krosoft.Extensions.Data.EntityFramework.Extensions; 
+using Krosoft.Extensions.Data.EntityFramework.PostgreSql.Extensions;
 using Krosoft.Extensions.Samples.DotNet9.Api.Data;
 using Krosoft.Extensions.WebApi.Extensions;
 using Krosoft.Extensions.WebApi.HealthChecks.Extensions;
@@ -35,10 +35,11 @@ builder.Services
 
 //Data.
        .AddRepositories()
-       .AddDbContextInMemory<SampleKrosoftContext>(false)
+       .AddRepositories() 
+       //.AddDbContextInMemory<SampleKrosoftContext>(false)
 //.AddDbContextSqlite<SampleKrosoftContext>(builder.Configuration); 
-//.AddDbContextPostgreSql<KrosoftExtensionTenantContext>(builder.Configuration);
-       .AddSeedService<SampleKrosoftContext, SampleKrosoftContextSeedService>()
+.AddDbContextPostgreSql<SampleKrosoftContext>(builder.Configuration)
+       //.AddSeedService<SampleKrosoftContext, SampleKrosoftContextSeedService>()
 
 //Autres
        .AddHealthChecks()

@@ -1,5 +1,4 @@
-﻿using System;
-using JetBrains.Annotations;
+﻿using JetBrains.Annotations;
 using Krosoft.Extensions.Core.Models;
 using Krosoft.Extensions.Data.Abstractions.Models;
 

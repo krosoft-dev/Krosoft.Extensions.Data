@@ -25,9 +25,9 @@ public class HealthCheckTests : SampleBaseApiTest<Program>
 
         var checks = healthCheckStatus.Checks.OrderBy(c => c.Key).ToList();
         Check.That(checks).HasSize(3);
-        Check.That(checks.Select(c => c.Key)).ContainsExactly( "SampleKrosoftContext", "self", "Test_Endpoint");
-        Check.That(checks.Select(c => c.Status)).ContainsExactly("Healthy",  "Healthy", "Healthy");
-        Check.That(checks.Select(c => c.Description)).ContainsExactly( null, null, null);
+        Check.That(checks.Select(c => c.Key)).ContainsExactly("SampleKrosoftContext", "self", "Test_Endpoint");
+        Check.That(checks.Select(c => c.Status)).ContainsExactly("Healthy", "Healthy", "Healthy");
+        Check.That(checks.Select(c => c.Description)).ContainsExactly(null, null, null);
     }
 
     [TestMethod]

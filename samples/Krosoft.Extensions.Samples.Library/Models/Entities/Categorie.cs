@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using JetBrains.Annotations;
+﻿using JetBrains.Annotations;
 using Krosoft.Extensions.Core.Models;
 using Krosoft.Extensions.Data.Abstractions.Models;
 using Krosoft.Extensions.Samples.Library.Models.Enums;

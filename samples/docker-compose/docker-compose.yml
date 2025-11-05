@@ -1,0 +1,12 @@
+services:
+  krosoft-extensions.postgres:
+    image: "postgres:14.3-alpine"
+    restart: on-failure
+
+  krosoft-extensions.samples.dotnet9.api:
+    image: ${DOCKER_REGISTRY-}krosoft-extensions.samples.dotnet9.api:${TAG_VERSION}
+    restart: unless-stopped
+    environment:
+      DOTNET_ENVIRONMENT: ${DOTNET_ENVIRONMENT}
+      ASPNETCORE_URLS: http://+:${SERVER_PORT}
+      TZ: Europe/Paris

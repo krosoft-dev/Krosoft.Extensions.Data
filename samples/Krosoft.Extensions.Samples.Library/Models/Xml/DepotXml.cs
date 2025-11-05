@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Xml.Serialization;
+﻿using System.Xml.Serialization;
 
 namespace Krosoft.Extensions.Samples.Library.Models.Xml;
 
@@ -16,5 +15,5 @@ public record DepotXml
     public string? NumeroFluxDepot { get; set; }
 
     [XmlElement("Errors")]
-    public List<ErreurXml> Errors { get; set; } = new List<ErreurXml>();
+    public List<ErreurXml> Errors { get; set; } = new();
 }

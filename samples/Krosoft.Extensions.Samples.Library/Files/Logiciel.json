@@ -5,6 +5,7 @@
     "Description": "Logiciel de lecture de fichiers PDF",
 
     "StatutCode": 1,
+    "CategorieId": "2a7c1a9d-6db3-4d1e-8d8b-9e8431d1b55c",
     "CreatedAt": "2023-01-01T12:00:00Z",
     "CreatedBy": "Systeme",
     "UpdatedBy": "Systeme",
@@ -16,6 +17,7 @@
     "Description": "Logiciel de calcul de tableaux",
 
     "StatutCode": 1,
+    "CategorieId": "2a7c1a9d-6db3-4d1e-8d8b-9e8431d1b55c",
     "CreatedAt": "2023-01-01T12:00:00Z",
     "CreatedBy": "Systeme",
     "UpdatedBy": "Systeme",
@@ -38,7 +40,7 @@
     "Id": "3e8f94fd-03ea-47b0-b8c5-20b14c361fce",
     "Nom": "Logiciel2",
     "Description": "Deuxième logiciel",
-    "CategorieId": "4560f48d-4d86-4b1e-8b22-51c1a9e3d6ca",
+    "CategorieId": "2a7c1a9d-6db3-4d1e-8d8b-9e8431d1b55c",
 
     "StatutCode": 2,
     "CreatedAt": "2023-02-01T12:00:00Z",
@@ -50,7 +52,7 @@
     "Id": "6c8a012b-cc8a-4da0-85a5-c9a87bb1a20a",
     "Nom": "Logiciel3",
     "Description": "Troisième logiciel",
-    "CategorieId": "789e4321-0987-4567-abcd-1234dcba5678",
+    "CategorieId": "2a7c1a9d-6db3-4d1e-8d8b-9e8431d1b55c",
 
     "StatutCode": 1,
     "CreatedAt": "2023-03-01T12:00:00Z",
@@ -62,7 +64,7 @@
     "Id": "9b5ccfd1-8c3e-4a0c-b4af-543a6f87042d",
     "Nom": "Logiciel4",
     "Description": "Quatrième logiciel",
-    "CategorieId": "abcdef12-3456-7890-1234-567890abcdef",
+    "CategorieId": "2a7c1a9d-6db3-4d1e-8d8b-9e8431d1b55c",
 
     "StatutCode": 2,
     "CreatedAt": "2023-04-01T12:00:00Z",
@@ -74,7 +76,7 @@
     "Id": "c40e3ff1-4f3a-4a3a-8b0c-c52a45e6e7b6",
     "Nom": "Logiciel5",
     "Description": "Cinquième logiciel",
-    "CategorieId": "abcdef12-3456-7890-1234-567890abcdef",
+    "CategorieId": "2a7c1a9d-6db3-4d1e-8d8b-9e8431d1b55c",
 
     "StatutCode": 1,
     "CreatedAt": "2023-05-01T12:00:00Z",

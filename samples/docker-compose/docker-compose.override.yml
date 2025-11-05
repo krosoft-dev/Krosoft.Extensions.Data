@@ -1,0 +1,17 @@
+services:
+  krosoft-extensions.postgres:
+    volumes:
+      - ../:/data
+      - ./postgres-data:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: "krosoft_extensions"
+
+  krosoft-extensions.samples.dotnet9.api:
+    build:
+      context: ..
+      dockerfile: Krosoft.Extensions.Samples.DotNet9.Api/Dockerfile 
+    ports:
+      - "6009:5000"

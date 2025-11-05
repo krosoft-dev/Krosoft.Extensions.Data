@@ -7,7 +7,7 @@ namespace Krosoft.Extensions.Samples.DotNet9.Api.Data;
 
 public class SampleKrosoftContext : KrosoftContext
 {
-    public SampleKrosoftContext(DbContextOptions options)
+    public SampleKrosoftContext(DbContextOptions<SampleKrosoftContext> options)
         : base(options)
     {
     }
@@ -16,6 +16,7 @@ public class SampleKrosoftContext : KrosoftContext
     {
         base.OnModelCreating(modelBuilder);
 
+        modelBuilder.HasDataJson<Categorie>();
         modelBuilder.HasDataJson<Statistique>();
         modelBuilder.HasDataJson<Logiciel>();
         modelBuilder.HasDataJson<Langue>();

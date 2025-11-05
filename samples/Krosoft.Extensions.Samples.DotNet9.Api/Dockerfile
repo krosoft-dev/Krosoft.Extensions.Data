@@ -27,3 +27,11 @@ WORKDIR /app
 COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "Krosoft.Extensions.Samples.DotNet8.Api.dll"]
  
+
+
+
+
+
+
+
+ 

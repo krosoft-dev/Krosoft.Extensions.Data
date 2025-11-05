@@ -10,24 +10,8 @@ namespace Krosoft.Extensions.Samples.DotNet9.Api.Tests.Functional;
 [TestClass]
 public class LogicielsEndpointTests : SampleBaseApiTest<Program>
 {
-    private static async Task CheckExportFile(HttpResponseMessage response, string fileNameExpected)
-    {
-        var content = await response.Content.ReadAsStringAsync(CancellationToken.None);
-        Console.WriteLine(content);
-
-        Check.That(response.StatusCode).IsEqualTo(HttpStatusCode.OK);
-
-        var fileName = response.Content.Headers.ContentDisposition?.FileName;
-
-        Check.That(fileName).IsEqualTo(fileNameExpected);
-
-        var stream = await response.Content.ReadAsStreamAsync(CancellationToken.None);
-        Check.That(stream).IsNotNull();
-        Check.That(stream.CanRead).IsTrue();
-
-        await FileHelper.WriteAsync(fileName!, stream, CancellationToken.None);
-        Check.That(File.Exists(fileName)).IsTrue();
-    }
+  
+ 
 
     [TestMethod]
     public async Task Logiciels_Ok()

@@ -14,10 +14,6 @@ public interface IWriteRepository<TEntity> : IDisposable where TEntity : class
     void DeleteRange(IEnumerable<TEntity> entities);
 
     void DeleteRange(Expression<Func<TEntity, bool>> predicate);
-
-#if NET7_0_OR_GREATER
-    Task DeleteRangeAsync(Expression<Func<TEntity, bool>> predicate);
-#endif
     void DeleteRange();
     TEntity? Get(params object[] key);
 
@@ -39,4 +35,16 @@ public interface IWriteRepository<TEntity> : IDisposable where TEntity : class
 
     void UpdateRange(IEnumerable<TEntity> entities,
                      params Expression<Func<TEntity, object?>>[] propertiesExpression);
+
+#if NET7_0_OR_GREATER
+    Task DeleteRangeAsync(CancellationToken cancellationToken);
+    Task DeleteRangeAsync(Expression<Func<TEntity, bool>> predicate,
+                          CancellationToken cancellationToken);
+
+    Task<int> UpdateRangeAsync(Expression<Func<TEntity, bool>> predicate,
+                               Action<IUpdatePropertyBuilder<TEntity>> setProperties,
+                               CancellationToken cancellationToken);
+    Task UpdateRangeAsync( Action<IUpdatePropertyBuilder<TEntity>> setProperties,
+                           CancellationToken cancellationToken);
+#endif
 }

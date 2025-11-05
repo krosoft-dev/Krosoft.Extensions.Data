@@ -9,4 +9,5 @@ public record LogicielDto
     public string? Description { get; set; }
     public StatutCode StatutCode { get; set; }
     public DateTimeOffset CreationDate { get; set; }
+    public string? GroupeNom { get; set; }
 }
