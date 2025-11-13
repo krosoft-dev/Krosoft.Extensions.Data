@@ -14,8 +14,8 @@
 		<PackageReference Include="Krosoft.Extensions.WebApi" Version="2025.11.12.3998" />
  		<PackageReference Include="Krosoft.Extensions.WebApi.Swagger.HealthChecks" Version="2025.11.12.3999" />
 	 		 	<PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.22.1" />
-		<PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore" Version="9.0.11" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.11">
+		<PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore" Version="10.0.0" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="10.0.0">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
