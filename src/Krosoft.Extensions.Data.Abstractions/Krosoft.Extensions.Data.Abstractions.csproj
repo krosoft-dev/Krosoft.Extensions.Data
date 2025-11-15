@@ -5,6 +5,6 @@
 	</PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="Krosoft.Extensions.Core" Version="2025.11.13.4103" />
-		<PackageReference Include="LinqKit.Core" Version="1.2.8" />
+		<PackageReference Include="LinqKit.Core" Version="1.2.9" />
 	</ItemGroup>
 </Project>
