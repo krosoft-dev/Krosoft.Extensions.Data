@@ -44,7 +44,7 @@
 		<PackageReference Include="System.Text.Json" Version="9.0.11" />
 	</ItemGroup>
 	<ItemGroup> 
-		<PackageReference Include="Krosoft.Extensions.Core" Version="2025.11.13.4103" />
+		<PackageReference Include="Krosoft.Extensions.Core" Version="2025.11.17.4348" />
 		<PackageReference Include="LinqKit.Core" Version="1.2.9" />
 	</ItemGroup>
 	<ItemGroup>
