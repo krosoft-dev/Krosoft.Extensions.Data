@@ -21,7 +21,7 @@
     <EmbeddedResource Include="Files\sample2.pdf" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="JetBrains.Annotations" Version="2025.2.2" />
+    <PackageReference Include="JetBrains.Annotations" Version="2025.2.4" />
     <PackageReference Include="Krosoft.Extensions.Cqrs" Version="2025.11.20.4507" />
     <PackageReference Include="Bogus" Version="35.6.5" />
   </ItemGroup>
