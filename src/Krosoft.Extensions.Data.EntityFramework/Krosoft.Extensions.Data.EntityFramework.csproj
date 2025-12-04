@@ -53,8 +53,8 @@
 		<PackageReference Include="Microsoft.Extensions.Logging.Console" Version="10.0.0" /> 
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="Krosoft.Extensions.Core" Version="2025.9.18.3152" />
-		<PackageReference Include="LinqKit.Core" Version="1.2.8" />
+		<PackageReference Include="Krosoft.Extensions.Core" Version="2025.11.17.4348" />
+		<PackageReference Include="LinqKit.Core" Version="1.2.9" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\Krosoft.Extensions.Data.Abstractions\Krosoft.Extensions.Data.Abstractions.csproj" />
