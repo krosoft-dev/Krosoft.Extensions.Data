@@ -2,8 +2,8 @@
 	<ItemGroup>
 		<PackageReference Include="Krosoft.Extensions.Testing.Cqrs" Version="2025.11.21.4519" />
 		<PackageReference Include="Krosoft.Extensions.Testing.Data.EntityFramework" Version="2025.11.21.4518" />
-		<PackageReference Include="Krosoft.Extensions.Testing.WebApi" Version="2025.11.18.4460" />
-		<PackageReference Include="Krosoft.Extensions.Testing" Version="2025.11.21.4519" />
+		<PackageReference Include="Krosoft.Extensions.Testing.WebApi" Version="2025.12.4.4621" />
+		<PackageReference Include="Krosoft.Extensions.Testing" Version="2025.12.4.4621" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\..\samples\Krosoft.Extensions.Samples.DotNet9.Api\Krosoft.Extensions.Samples.DotNet9.Api.csproj" />
