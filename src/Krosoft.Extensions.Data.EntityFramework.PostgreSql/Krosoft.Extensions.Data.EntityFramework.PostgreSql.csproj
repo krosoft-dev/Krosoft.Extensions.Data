@@ -28,7 +28,7 @@
 		<PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="10.0.0" />
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="LinqKit.Core" Version="1.2.9" />
+		<PackageReference Include="LinqKit.Core" Version="1.2.10" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\Krosoft.Extensions.Data.EntityFramework\Krosoft.Extensions.Data.EntityFramework.csproj" />
