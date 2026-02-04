@@ -4,7 +4,7 @@
 		<Description>Package pour faciliter l'accès aux données avec un ORM.</Description>
 	</PropertyGroup>
 	<ItemGroup>
-		<PackageReference Include="Krosoft.Extensions.Core" Version="2026.1.14.4995" />
+		<PackageReference Include="Krosoft.Extensions.Core" Version="2026.2.3.5273" />
 		<PackageReference Include="LinqKit.Core" Version="1.2.10" />
 	</ItemGroup>
 </Project>
