@@ -28,7 +28,7 @@
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="10.0.2" /> 
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="LinqKit.Core" Version="1.2.10" />
+		<PackageReference Include="LinqKit.Core" Version="1.2.11" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\Krosoft.Extensions.Data.EntityFramework\Krosoft.Extensions.Data.EntityFramework.csproj" />
