@@ -1,6 +1,5 @@
 using System.Net;
 using Krosoft.Extensions.Core.Extensions;
-using Krosoft.Extensions.Core.Helpers;
 using Krosoft.Extensions.Core.Models;
 using Krosoft.Extensions.Samples.DotNet9.Api.Features.Logiciels._;
 using Krosoft.Extensions.Samples.DotNet9.Api.Tests.Core;
@@ -10,25 +9,6 @@ namespace Krosoft.Extensions.Samples.DotNet9.Api.Tests.Functional;
 [TestClass]
 public class LogicielsEndpointTests : SampleBaseApiTest<Program>
 {
-    private static async Task CheckExportFile(HttpResponseMessage response, string fileNameExpected)
-    {
-        var content = await response.Content.ReadAsStringAsync(CancellationToken.None);
-        Console.WriteLine(content);
-
-        Check.That(response.StatusCode).IsEqualTo(HttpStatusCode.OK);
-
-        var fileName = response.Content.Headers.ContentDisposition?.FileName;
-
-        Check.That(fileName).IsEqualTo(fileNameExpected);
-
-        var stream = await response.Content.ReadAsStreamAsync(CancellationToken.None);
-        Check.That(stream).IsNotNull();
-        Check.That(stream.CanRead).IsTrue();
-
-        await FileHelper.WriteAsync(fileName!, stream, CancellationToken.None);
-        Check.That(File.Exists(fileName)).IsTrue();
-    }
-
     [TestMethod]
     public async Task Logiciels_Ok()
     {
@@ -40,7 +20,7 @@ public class LogicielsEndpointTests : SampleBaseApiTest<Program>
         Check.That(result).IsNotNull();
         Check.That(result?.Items).HasSize(7);
         Check.That(result?.Items.Select(x => x.Id.ToString()))
-             .IsOnlyMadeOf("2a7c1a9d-6db3-4d1e-8d8b-9e8431d1b55c", 
+             .IsOnlyMadeOf("2a7c1a9d-6db3-4d1e-8d8b-9e8431d1b55c",
                            "4560f48d-4d86-4b1e-8b22-51c1a9e3d6ca",
                            "1f39c60d-4f92-4f17-aa45-99e8f86a3b3a",
                            "3e8f94fd-03ea-47b0-b8c5-20b14c361fce",

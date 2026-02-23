@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Krosoft.Extensions.Samples.Library.Models;
+﻿namespace Krosoft.Extensions.Samples.Library.Models;
 
 public record Item
 {

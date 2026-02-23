@@ -16,7 +16,7 @@ public interface IWriteRepository<TEntity> : IDisposable where TEntity : class
     void DeleteRange(Expression<Func<TEntity, bool>> predicate);
 
 #if NET7_0_OR_GREATER
-    Task DeleteRangeAsync(Expression<Func<TEntity, bool>> predicate);
+    Task DeleteRangeAsync(Expression<Func<TEntity, bool>> predicate, CancellationToken cancellationToken);
 #endif
     void DeleteRange();
     TEntity? Get(params object[] key);

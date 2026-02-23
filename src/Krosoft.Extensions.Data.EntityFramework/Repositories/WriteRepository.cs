@@ -50,9 +50,6 @@ public sealed class WriteRepository<TEntity> : IWriteRepository<TEntity>
         Delete(entity!);
     }
 
-#if NET7_0_OR_GREATER
-    public Task DeleteRangeAsync(Expression<Func<TEntity, bool>> predicate) => _dbSet.Where(predicate).ExecuteDeleteAsync();
-#endif
     public void DeleteRange()
     {
         DeleteRange(_dbSet);
@@ -130,4 +127,9 @@ public sealed class WriteRepository<TEntity> : IWriteRepository<TEntity>
             Update(entity, propertiesExpression);
         }
     }
+
+#if NET7_0_OR_GREATER
+    public Task DeleteRangeAsync(Expression<Func<TEntity, bool>> predicate, CancellationToken cancellationToken)
+        => _dbSet.Where(predicate).ExecuteDeleteAsync(cancellationToken);
+#endif
 }
