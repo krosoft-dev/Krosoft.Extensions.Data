@@ -207,37 +207,37 @@ public class QueryableExtensionsTests
     [TestMethod]
     public void Search_WithEmptyTerm_ReturnsOriginalQuery()
     {
-        // Arrange
+      
         var query = new List<SampleEntity>().AsQueryable();
         var searchTerm = string.Empty;
         var selectors = new Expression<Func<SampleEntity, string?>>[] { p => p.Name, p => p.Description };
 
-        // Act
+    
         var result = query.Search(searchTerm, selectors);
 
-        // Assert
+        
         Check.That(result).IsEqualTo(query);
     }
 
     [TestMethod]
     public void Search_WithNullTerm_ReturnsOriginalQuery()
     {
-        // Arrange
+      
         var query = new List<SampleEntity>().AsQueryable();
         string? searchTerm = null;
         var selectors = new Expression<Func<SampleEntity, string?>>[] { p => p.Name, p => p.Description };
 
-        // Act
+    
         var result = query.Search(searchTerm, selectors);
 
-        // Assert
+        
         Check.That(result).IsEqualTo(query);
     }
 
     [TestMethod]
     public void Search_WithValidTerm_FiltersQuery()
     {
-        // Arrange
+      
         var persons = new List<SampleEntity>
         {
             new SampleEntity { Id = 1, Name = "John", Description = "Developer" },
@@ -249,47 +249,47 @@ public class QueryableExtensionsTests
         var searchTerm = "john";
         var selectors = new Expression<Func<SampleEntity, string?>>[] { p => p.Name, p => p.Description };
 
-        // Act
+    
         var result = query.Search(searchTerm, selectors);
 
-        // Assert
+        
         Check.That(result).ContainsExactly(persons[0]);
     }
 
     [TestMethod]
     public void SearchAll_WithEmptyTerm_ReturnsOriginalQuery()
     {
-        // Arrange
+      
         var query = new List<SampleEntity>().AsQueryable();
         var searchTerm = string.Empty;
         var selector = new Expression<Func<SampleEntity, string?>>[] { p => p.Name };
 
-        // Act
+    
         var result = query.SearchAll(searchTerm, selector[0]);
 
-        // Assert
+        
         Check.That(result).IsEqualTo(query);
     }
 
     [TestMethod]
     public void SearchAll_WithNullTerm_ReturnsOriginalQuery()
     {
-        // Arrange
+      
         var query = new List<SampleEntity>().AsQueryable();
         string? searchTerm = null;
         var selector = new Expression<Func<SampleEntity, string?>>[] { p => p.Name };
 
-        // Act
+    
         var result = query.SearchAll(searchTerm, selector[0]);
 
-        // Assert
+        
         Check.That(result).IsEqualTo(query);
     }
 
     [TestMethod]
     public void SearchAll_WithValidTerm_FiltersQuery()
     {
-        // Arrange
+      
         var persons = new List<SampleEntity>
         {
             new SampleEntity { Id = 1, Name = "John Doe" },
@@ -301,10 +301,10 @@ public class QueryableExtensionsTests
         var searchTerm = "john";
         var selector = new Expression<Func<SampleEntity, string?>>[] { p => p.Name };
 
-        // Act
+    
         var result = query.SearchAll(searchTerm, selector[0]);
 
-        // Assert
+        
         Check.That(result).ContainsExactly(persons[0], persons[2]);
     }
 }
