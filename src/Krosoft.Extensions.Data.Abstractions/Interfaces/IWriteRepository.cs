@@ -27,6 +27,8 @@ public interface IWriteRepository<TEntity> : IDisposable where TEntity : class
 
     void InsertRange(IEnumerable<TEntity> entities);
 
+    Task BulkInsertAsync(IEnumerable<TEntity> entities, CancellationToken cancellationToken, int batchSize = 100_000);
+
     void InsertUpdateDelete(CrudBusiness<TEntity> crudBusiness);
     IQueryable<TEntity> Query();
 

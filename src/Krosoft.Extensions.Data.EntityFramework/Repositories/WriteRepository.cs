@@ -1,4 +1,5 @@
 ﻿using System.Linq.Expressions;
+using EFCore.BulkExtensions;
 using Krosoft.Extensions.Core.Tools;
 using Krosoft.Extensions.Data.Abstractions.Interfaces;
 using Krosoft.Extensions.Data.Abstractions.Models;
@@ -93,6 +94,31 @@ public sealed class WriteRepository<TEntity> : IWriteRepository<TEntity>
         Guard.IsNotNull(nameof(entity), entity);
 
         _dbSet.Add(entity);
+    }
+
+    public async Task BulkInsertAsync(IEnumerable<TEntity> entities, CancellationToken cancellationToken, int batchSize = 100_000)
+    {
+        Guard.IsNotNull(nameof(entities), entities);
+
+        var list = entities as ICollection<TEntity> ?? entities.ToList();
+        var config = new BulkConfig { SetOutputIdentity = false, PreserveInsertOrder = true, BulkCopyTimeout = 3000 };
+
+        await using var transaction = await _dbContext.Database.BeginTransactionAsync(cancellationToken);
+        try
+        {
+            for (var i = 0; i < list.Count; i += batchSize)
+            {
+                var batch = list.Skip(i).Take(batchSize).ToList();
+                await _dbContext.BulkInsertAsync(batch, config, cancellationToken: cancellationToken);
+            }
+
+            await transaction.CommitAsync(cancellationToken);
+        }
+        catch
+        {
+            await transaction.RollbackAsync(cancellationToken);
+            throw;
+        }
     }
 
     public void InsertRange(IEnumerable<TEntity> entities)
