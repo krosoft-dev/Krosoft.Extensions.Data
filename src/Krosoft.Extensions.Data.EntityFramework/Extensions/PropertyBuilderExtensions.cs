@@ -10,7 +10,7 @@ namespace Krosoft.Extensions.Data.EntityFramework.Extensions;
 public static class PropertyBuilderExtensions
 {
     public static PropertyBuilder<T> HasJson<T>(this PropertyBuilder<T> propertyBuilder)
-        where T : class, new()
+        where T : class?, new()
     {
         var converter = new ValueConverter<T, string>
             (
