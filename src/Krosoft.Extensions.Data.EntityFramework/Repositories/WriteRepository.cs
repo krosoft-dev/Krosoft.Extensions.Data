@@ -59,13 +59,29 @@ public sealed class WriteRepository<TEntity> : IWriteRepository<TEntity>
     {
         Guard.IsNotNull(nameof(entities), entities);
 
-        _dbSet.RemoveRange(entities);
+        _dbContext.ChangeTracker.AutoDetectChangesEnabled = false;
+        try
+        {
+            _dbSet.RemoveRange(entities);
+        }
+        finally
+        {
+            _dbContext.ChangeTracker.AutoDetectChangesEnabled = true;
+        }
     }
 
     public void DeleteRange(Expression<Func<TEntity, bool>> predicate)
     {
         var query = _dbSet.Where(predicate);
-        _dbSet.RemoveRange(query);
+        _dbContext.ChangeTracker.AutoDetectChangesEnabled = false;
+        try
+        {
+            _dbSet.RemoveRange(query);
+        }
+        finally
+        {
+            _dbContext.ChangeTracker.AutoDetectChangesEnabled = true;
+        }
     }
 
     public TEntity? Get(params object[] key) => _dbSet.Find(key);
@@ -83,7 +99,15 @@ public sealed class WriteRepository<TEntity> : IWriteRepository<TEntity>
     {
         Guard.IsNotNull(nameof(entities), entities);
 
-        _dbSet.AddRange(entities);
+        _dbContext.ChangeTracker.AutoDetectChangesEnabled = false;
+        try
+        {
+            _dbSet.AddRange(entities);
+        }
+        finally
+        {
+            _dbContext.ChangeTracker.AutoDetectChangesEnabled = true;
+        }
     }
 
     public void InsertUpdateDelete(CrudBusiness<TEntity> crudBusiness)
@@ -116,15 +140,32 @@ public sealed class WriteRepository<TEntity> : IWriteRepository<TEntity>
     public void UpdateRange(IEnumerable<TEntity> entities)
     {
         Guard.IsNotNull(nameof(entities), entities);
-        _dbSet.UpdateRange(entities);
+
+        _dbContext.ChangeTracker.AutoDetectChangesEnabled = false;
+        try
+        {
+            _dbSet.UpdateRange(entities);
+        }
+        finally
+        {
+            _dbContext.ChangeTracker.AutoDetectChangesEnabled = true;
+        }
     }
 
     public void UpdateRange(IEnumerable<TEntity> entities,
                             params Expression<Func<TEntity, object?>>[] propertiesExpression)
     {
-        foreach (var entity in entities)
+        _dbContext.ChangeTracker.AutoDetectChangesEnabled = false;
+        try
         {
-            Update(entity, propertiesExpression);
+            foreach (var entity in entities)
+            {
+                Update(entity, propertiesExpression);
+            }
+        }
+        finally
+        {
+            _dbContext.ChangeTracker.AutoDetectChangesEnabled = true;
         }
     }
 

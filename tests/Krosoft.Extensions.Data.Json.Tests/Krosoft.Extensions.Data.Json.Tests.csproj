@@ -1,8 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<ItemGroup>
-		<PackageReference Include="Krosoft.Extensions.Testing" Version="2026.2.17.5654" />
+		<PackageReference Include="Krosoft.Extensions.Testing" Version="2026.5.28.7430" />
 		<PackageReference Include="LinqKit.Core" Version="1.2.11" />
-		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.13" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.16" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\..\samples\Krosoft.Extensions.Samples.Library\Krosoft.Extensions.Samples.Library.csproj" />

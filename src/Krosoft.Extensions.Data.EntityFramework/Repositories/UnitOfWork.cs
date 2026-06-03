@@ -18,8 +18,16 @@ public sealed class UnitOfWork : IUnitOfWork
     }
 
     public int SaveChanges()
-        => _context.SaveChanges();
+    {
+        var result = _context.SaveChanges();
+        _context.ChangeTracker.Clear();
+        return result;
+    }
 
     public async Task<int> SaveChangesAsync(CancellationToken cancellationToken)
-        => await _context.SaveChangesAsync(cancellationToken);
+    {
+        var result = await _context.SaveChangesAsync(cancellationToken);
+        _context.ChangeTracker.Clear();
+        return result;
+    }
 }

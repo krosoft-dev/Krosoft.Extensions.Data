@@ -23,3 +23,7 @@ extends:
     packages:
       - "Krosoft.Extensions.Data.Abstractions"
       - "Krosoft.Extensions.Data.EntityFramework"
+      - "Krosoft.Extensions.Data.EntityFramework.InMemory"
+      - "Krosoft.Extensions.Data.EntityFramework.SqlServer"
+      - "Krosoft.Extensions.Data.EntityFramework.Sqlite"
+      - "Krosoft.Extensions.Data.EntityFramework.PostgreSql"
