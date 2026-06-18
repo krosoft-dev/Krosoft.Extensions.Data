@@ -27,6 +27,6 @@
 		<PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="9.0.16" />
 	</ItemGroup>
 	<ItemGroup>
-	  <PackageReference Include="Krosoft.Extensions.Core" Version="2026.5.18.7260" />
+	  <PackageReference Include="Krosoft.Extensions.Core" Version="2026.6.2.7473" />
 	</ItemGroup>
 </Project>
