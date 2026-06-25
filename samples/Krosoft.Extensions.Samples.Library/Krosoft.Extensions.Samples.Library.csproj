@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
     <None Remove="Files\Categorie.json" />
@@ -22,7 +22,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="JetBrains.Annotations" Version="2026.2.0" />
-    <PackageReference Include="Krosoft.Extensions.Cqrs" Version="2026.5.27.7407" />
+    <PackageReference Include="Krosoft.Extensions.Cqrs" Version="2026.6.25.7818" />
     <PackageReference Include="Bogus" Version="35.6.5" />
   </ItemGroup>
   <ItemGroup>
