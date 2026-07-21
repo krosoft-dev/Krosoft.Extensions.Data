@@ -12,7 +12,7 @@
 	<ItemGroup>
 		<PackageReference Include="JetBrains.Annotations" Version="2026.2.0" />
 		<PackageReference Include="LinqKit.Core" Version="1.2.11" />
-		<PackageReference Include="Krosoft.Extensions.Testing" Version="2026.7.18.8422" />
+		<PackageReference Include="Krosoft.Extensions.Testing" Version="2026.7.19.8464" />
 		<PackageReference Include="Krosoft.Extensions.Testing.Data.EntityFramework" Version="2026.7.18.8418" />
 	</ItemGroup>
 	<ItemGroup>
