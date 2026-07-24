@@ -28,7 +28,7 @@ internal class ProduitsEndpoint : IEndpoint
         group.MapGet("/{id:guid}", (Guid id,
                                     IMediator mediator,
                                     CancellationToken cancellationToken)
-                                  => mediator.Send(new GetProduitByIdQuery(id), cancellationToken));
+                         => mediator.Send(new GetProduitByIdQuery(id), cancellationToken));
 
         group.MapPost("/", (CreateProduitCommandDto dto,
                             IMediator mediator,
@@ -42,26 +42,26 @@ internal class ProduitsEndpoint : IEndpoint
         group.MapPost("/seed", (SeedProduitsCommandDto dto,
                                 IMediator mediator,
                                 CancellationToken cancellationToken)
-                              => mediator.Send(new SeedProduitsCommand
-                              {
-                                  Count = dto.Count,
-                                  BatchSize = dto.BatchSize ?? 10_000
-                              }, cancellationToken));
+                          => mediator.Send(new SeedProduitsCommand
+                          {
+                              Count = dto.Count,
+                              BatchSize = dto.BatchSize ?? 10_000
+                          }, cancellationToken));
 
         group.MapPut("/{id:guid}", (Guid id,
                                     UpdateProduitCommandDto dto,
                                     IMediator mediator,
                                     CancellationToken cancellationToken)
-                                  => mediator.Send(new UpdateProduitCommand
-                                  {
-                                      Id = id,
-                                      Nom = dto.Nom,
-                                      Description = dto.Description
-                                  }, cancellationToken));
+                         => mediator.Send(new UpdateProduitCommand
+                         {
+                             Id = id,
+                             Nom = dto.Nom,
+                             Description = dto.Description
+                         }, cancellationToken));
 
         group.MapDelete("/{id:guid}", (Guid id,
                                        IMediator mediator,
                                        CancellationToken cancellationToken)
-                                     => mediator.Send(new DeleteProduitCommand(id), cancellationToken));
+                            => mediator.Send(new DeleteProduitCommand(id), cancellationToken));
     }
 }
