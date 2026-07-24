@@ -1,6 +1,7 @@
 ﻿using Krosoft.Extensions.Data.Abstractions.Interfaces;
 using Krosoft.Extensions.Data.EntityFramework.Interfaces;
 using Krosoft.Extensions.Data.EntityFramework.Repositories;
+using Krosoft.Extensions.Data.EntityFramework.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -9,7 +10,7 @@ namespace Krosoft.Extensions.Data.EntityFramework.Extensions;
 
 public static class ServiceCollectionExtensions
 {
-    private static readonly object DbLock = new object();
+    private static readonly object DbLock = new();
 
     public static IServiceCollection AddRepositories(this IServiceCollection services)
     {
@@ -18,6 +19,7 @@ public static class ServiceCollectionExtensions
         services.AddScoped<IUnitOfWork, UnitOfWork>();
         services.AddScoped<IGenericWriteRepository, GenericWriteRepository>();
         services.AddScoped<IGenericReadRepository, GenericReadRepository>();
+        services.AddScoped<IBatchDbService, BatchDbService>();
 
         return services;
     }

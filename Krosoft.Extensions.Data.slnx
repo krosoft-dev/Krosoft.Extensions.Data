@@ -6,7 +6,12 @@
     <Platform Name="x86" />
   </Configurations>
   <Folder Name="/samples/">
+    <Project Path="samples/docker-compose/docker-compose.dcproj" Id="f7ef3b40-7c46-4a58-b5dc-9e765c39dc00">
+      <Platform Project="AnyCPU" />
+      <Build />
+    </Project>
     <Project Path="samples/Krosoft.Extensions.Samples.DotNet9.Api/Krosoft.Extensions.Samples.DotNet9.Api.csproj" />
+    <Project Path="samples/Krosoft.Extensions.Samples.DotNet10.Api/Krosoft.Extensions.Samples.DotNet10.Api.csproj" />
     <Project Path="samples/Krosoft.Extensions.Samples.Library/Krosoft.Extensions.Samples.Library.csproj" />
   </Folder>
   <Folder Name="/src/">

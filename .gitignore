@@ -402,4 +402,5 @@ yarn-error.log*
 # Specific to this project
 *.bak 
 temp/
- 
+**/minio_data/*
+**/postgres_data/*
