@@ -29,8 +29,8 @@ public static class ServiceCollectionExtensions
         services.AddScoped<ISeedService<TDbContext>, TSeedService>();
 
         services.AddLogging();
-        // Build the service provider.
-        var sp = services.BuildServiceProvider();
+ 
+        using var sp = services.BuildServiceProvider();
 
         // Create a scope to obtain a reference to the database context (ApplicationDbContext).
         using (var scope = sp.CreateScope())
