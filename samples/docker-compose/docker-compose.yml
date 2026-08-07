@@ -1,6 +1,6 @@
 services:
   krosoft-extensions.postgres:
-    image: postgres:17.2-alpine3.21
+    image: postgres:18.1-alpine3.21
 
   krosoft-extensions.samples.dotnet9.api:
     image: ${DOCKER_REGISTRY-}krosoft-extensions.samples.dotnet9.api:${TAG_VERSION}
