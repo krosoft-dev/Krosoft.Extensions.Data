@@ -1,4 +1,4 @@
-name: Nuget 'Krosoft.Extensions.Data.EntityFramework.Sqlite' - $(Date:yyyy.MM.dd).$(BuildID)
+name: Nuget 'Krosoft.Extensions.Data' - $(Date:yyyy.MM.dd).$(BuildID)
 
 pr: none
 
@@ -15,7 +15,8 @@ trigger:
       - main
   paths:
     include:
-      - "**/Krosoft.Extensions.Data.EntityFramework.Sqlite/*"
+      - src
+      - Directory.Build.props
 
 extends:
   template: tools/devops/templates/pipelines/nuget-template.yml@Krosoft.Extensions
@@ -23,4 +24,8 @@ extends:
     packages:
       - "Krosoft.Extensions.Data.Abstractions"
       - "Krosoft.Extensions.Data.EntityFramework"
+      - "Krosoft.Extensions.Data.EntityFramework.InMemory"
+      - "Krosoft.Extensions.Data.EntityFramework.PostgreSql"
+      - "Krosoft.Extensions.Data.EntityFramework.SqlServer"
       - "Krosoft.Extensions.Data.EntityFramework.Sqlite"
+      - "Krosoft.Extensions.Data.Json"
