@@ -2,7 +2,7 @@
 	<ItemGroup>
 		<PackageReference Include="Krosoft.Extensions.Testing" Version="2026.8.7.8934" />
 		<PackageReference Include="LinqKit.Core" Version="1.2.11" />
-		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.10" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.11" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\..\samples\Krosoft.Extensions.Samples.Library\Krosoft.Extensions.Samples.Library.csproj" />
