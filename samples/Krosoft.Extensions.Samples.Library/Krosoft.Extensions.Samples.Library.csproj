@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
     <None Remove="Files\Categorie.json" />
@@ -21,8 +21,8 @@
     <EmbeddedResource Include="Files\sample2.pdf" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="JetBrains.Annotations" Version="2025.2.4" />
-    <PackageReference Include="Krosoft.Extensions.Cqrs" Version="2026.5.27.7407" />
+    <PackageReference Include="JetBrains.Annotations" Version="2026.2.0" />
+    <PackageReference Include="Krosoft.Extensions.Cqrs" Version="2026.8.19.9284" />
     <PackageReference Include="Bogus" Version="35.6.5" />
   </ItemGroup>
   <ItemGroup>

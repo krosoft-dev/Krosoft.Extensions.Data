@@ -10,10 +10,10 @@
 		</Content>
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="JetBrains.Annotations" Version="2025.2.4" />
+		<PackageReference Include="JetBrains.Annotations" Version="2026.2.0" />
 		<PackageReference Include="LinqKit.Core" Version="1.2.11" />
-		<PackageReference Include="Krosoft.Extensions.Testing" Version="2026.5.28.7430" />
-		<PackageReference Include="Krosoft.Extensions.Testing.Data.EntityFramework" Version="2026.5.28.7426" />
+		<PackageReference Include="Krosoft.Extensions.Testing" Version="2026.8.19.9348" />
+		<PackageReference Include="Krosoft.Extensions.Testing.Data.EntityFramework" Version="2026.8.19.9348" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\..\samples\Krosoft.Extensions.Samples.DotNet9.Api\Krosoft.Extensions.Samples.DotNet9.Api.csproj" />
