@@ -1,9 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<ItemGroup>
-		<PackageReference Include="Krosoft.Extensions.Testing.Cqrs" Version="2026.8.21.9496" />
-		<PackageReference Include="Krosoft.Extensions.Testing.Data.EntityFramework" Version="2026.8.21.9496" />
-		<PackageReference Include="Krosoft.Extensions.Testing.WebApi" Version="2026.8.21.9496" />
-		<PackageReference Include="Krosoft.Extensions.Testing" Version="2026.8.21.9496" />
+		<PackageReference Include="Krosoft.Extensions.Testing.Cqrs" Version="2026.8.22.9588" />
+		<PackageReference Include="Krosoft.Extensions.Testing.Data.EntityFramework" Version="2026.8.22.9588" />
+		<PackageReference Include="Krosoft.Extensions.Testing.WebApi" Version="2026.8.22.9588" />
+		<PackageReference Include="Krosoft.Extensions.Testing" Version="2026.8.22.9588" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\..\samples\Krosoft.Extensions.Samples.DotNet9.Api\Krosoft.Extensions.Samples.DotNet9.Api.csproj" />
