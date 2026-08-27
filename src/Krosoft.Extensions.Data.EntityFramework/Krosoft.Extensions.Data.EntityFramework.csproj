@@ -13,7 +13,7 @@
 		<PackageReference Include="Microsoft.Extensions.Logging.Console" Version="10.0.11" />
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="Krosoft.Extensions.Core" Version="2026.8.21.9466" />
+		<PackageReference Include="Krosoft.Extensions.Core" Version="2026.8.24.9632" />
 		<PackageReference Include="LinqKit.Core" Version="1.2.11" />
 	</ItemGroup>
 	<ItemGroup>
