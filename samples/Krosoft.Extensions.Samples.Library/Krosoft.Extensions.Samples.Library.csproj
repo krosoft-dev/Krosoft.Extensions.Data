@@ -22,7 +22,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="JetBrains.Annotations" Version="2026.2.0" />
-    <PackageReference Include="Krosoft.Extensions.Cqrs" Version="2026.8.22.9592" />
+    <PackageReference Include="Krosoft.Extensions.Cqrs" Version="2026.8.27.9724" />
     <PackageReference Include="Bogus" Version="35.6.5" />
   </ItemGroup>
   <ItemGroup>
