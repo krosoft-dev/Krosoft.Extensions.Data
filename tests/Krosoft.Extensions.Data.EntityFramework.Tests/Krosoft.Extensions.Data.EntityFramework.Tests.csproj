@@ -12,8 +12,8 @@
 	<ItemGroup>
 		<PackageReference Include="JetBrains.Annotations" Version="2026.2.0" />
 		<PackageReference Include="LinqKit.Core" Version="1.2.11" />
-		<PackageReference Include="Krosoft.Extensions.Testing" Version="2026.8.27.9704" />
-		<PackageReference Include="Krosoft.Extensions.Testing.Data.EntityFramework" Version="2026.8.27.9704" />
+		<PackageReference Include="Krosoft.Extensions.Testing" Version="2026.8.28.9835" />
+		<PackageReference Include="Krosoft.Extensions.Testing.Data.EntityFramework" Version="2026.8.28.9835" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\..\samples\Krosoft.Extensions.Samples.DotNet9.Api\Krosoft.Extensions.Samples.DotNet9.Api.csproj" />
