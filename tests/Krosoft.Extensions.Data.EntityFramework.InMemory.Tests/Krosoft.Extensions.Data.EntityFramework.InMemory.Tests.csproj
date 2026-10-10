@@ -10,7 +10,7 @@
 		</Content>
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="LinqKit.Core" Version="1.2.11" />
+		<PackageReference Include="LinqKit.Core" Version="1.3.0" />
 		<PackageReference Include="Krosoft.Extensions.Testing" Version="2026.9.21.10826" />
 	</ItemGroup>
 	<ItemGroup>
