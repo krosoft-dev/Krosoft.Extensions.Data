@@ -86,9 +86,12 @@ public static class QueryableExtensions
         var predicate = PredicateBuilder.New<T>();
         foreach (var selector in selectors)
         {
-            var left = selector.Body;
-            left = Expression.Call(left, ToLowerMethod);
-            var containsBound = Expression.Call(left, ContainsMethod, right);
+            var value = selector.Body;
+            // Test du null avant ToLower : une colonne nullable ne fait pas planter l'évaluation en mémoire (LINQ to Objects, EF InMemory),
+            // et se traduit en "col IS NOT NULL AND lower(col) LIKE ..." en SQL.
+            var notNull = Expression.NotEqual(value, Expression.Constant(null, value.Type));
+            var contains = Expression.Call(Expression.Call(value, ToLowerMethod), ContainsMethod, right);
+            var containsBound = Expression.AndAlso(notNull, contains);
             var lambda = Expression.Lambda<Func<T, bool>>(containsBound, selector.Parameters);
 
             predicate = predicate.Or(lambda);

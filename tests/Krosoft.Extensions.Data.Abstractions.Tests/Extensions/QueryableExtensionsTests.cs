@@ -248,6 +248,37 @@ public class QueryableExtensionsTests
     }
 
     [TestMethod]
+    public void Search_WithNullValues_IgnoresThem()
+    {
+        var persons = new List<SampleEntity>
+        {
+            new SampleEntity { Id = 1, Name = null, Description = "Developer" },
+            new SampleEntity { Id = 2, Name = "Jane", Description = null },
+            new SampleEntity { Id = 3, Name = null, Description = null }
+        };
+
+        var query = persons.AsQueryable();
+        var selectors = new Expression<Func<SampleEntity, string?>>[] { p => p.Name, p => p.Description };
+
+        Check.That(query.Search("dev", selectors)).ContainsExactly(persons[0]);
+        Check.That(query.Search("jane", selectors)).ContainsExactly(persons[1]);
+    }
+
+    [TestMethod]
+    public void SearchAll_WithNullValues_IgnoresThem()
+    {
+        var persons = new List<SampleEntity>
+        {
+            new SampleEntity { Id = 1, Name = "John Doe" },
+            new SampleEntity { Id = 2, Name = null }
+        };
+
+        var result = persons.AsQueryable().SearchAll("john doe", p => p.Name);
+
+        Check.That(result).ContainsExactly(persons[0]);
+    }
+
+    [TestMethod]
     public void SearchAll_WithEmptyTerm_ReturnsOriginalQuery()
     {
         var query = new List<SampleEntity>().AsQueryable();
