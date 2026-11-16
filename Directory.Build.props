@@ -15,6 +15,9 @@
   <ItemGroup>
     <!--  GHSA-rvv3-g6hj-g44x : AutoMapper Vulnerable to Denial of Service (DoS) -->
     <NuGetAuditSuppress Include="https://github.com/advisories/GHSA-rvv3-g6hj-g44x" />
+    <!--  GHSA-gpwp-5797-mjff, GHSA-6vhm-j9h7-f9gh : AutoMapper, corrigés seulement en 15.1.4+ (licence commerciale) -->
+    <NuGetAuditSuppress Include="https://github.com/advisories/GHSA-gpwp-5797-mjff" />
+    <NuGetAuditSuppress Include="https://github.com/advisories/GHSA-6vhm-j9h7-f9gh" />
     <!-- En attendant une correction de la librairie Sqlite -->
     <NuGetAuditSuppress Include="https://github.com/advisories/GHSA-2m69-gcr7-jv3q" />
   </ItemGroup>
