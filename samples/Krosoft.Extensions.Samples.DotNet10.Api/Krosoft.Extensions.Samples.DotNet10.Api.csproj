@@ -12,7 +12,7 @@
 		<PackageReference Include="Krosoft.Extensions.Cqrs.Behaviors" Version="2026.11.16.13641" />
 		<PackageReference Include="Krosoft.Extensions.Cqrs.Behaviors.Validations" Version="2026.11.16.13641" />
 		<PackageReference Include="Krosoft.Extensions.Mapping" Version="2026.11.16.13558" />
-		<PackageReference Include="Krosoft.Extensions.Options" Version="2026.11.16.13634" />
+		<PackageReference Include="Krosoft.Extensions.Options" Version="2026.11.16.13781" />
 		<PackageReference Include="Krosoft.Extensions.WebApi" Version="2026.11.16.13671" /> 
 		<PackageReference Include="Krosoft.Extensions.WebApi.Identity" Version="2026.11.16.13671" />
 		<PackageReference Include="Krosoft.Extensions.WebApi.Swagger" Version="2026.11.16.13671" />
