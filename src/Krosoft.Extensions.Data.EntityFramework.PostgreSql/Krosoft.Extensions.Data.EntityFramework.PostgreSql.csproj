@@ -2,6 +2,8 @@
 	<PropertyGroup>
 		<PackageTags>Krosoft Extension Data ef entity framework orm PostgreSql</PackageTags>
 		<Description>Package pour faciliter l'accès aux données avec Entity Framework via PostgreSql.</Description>
+		<!-- net11.0 à rajouter à la sortie de Npgsql.EntityFrameworkCore.PostgreSQL 11 stable -->
+		<TargetFrameworks>net10.0</TargetFrameworks>
 	</PropertyGroup>
 	<ItemGroup Condition="'$(TargetFramework)' == 'net10.0'">
 		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.15" />

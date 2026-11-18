@@ -4,7 +4,6 @@
 		<Description>Package pour faciliter l'accès aux données avec Entity Framework.</Description>
 	</PropertyGroup>
 	<ItemGroup Condition="'$(TargetFramework)' == 'net10.0'">
-		<PackageReference Include="AutoMapper" Version="14.0.0" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="10.0.15" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.15" />
 		<PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="10.0.15" />
@@ -12,7 +11,16 @@
 		<PackageReference Include="Microsoft.Extensions.DependencyModel" Version="10.0.15" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Console" Version="10.0.15" />
 	</ItemGroup>
+	<ItemGroup Condition="'$(TargetFramework)' == 'net11.0'">
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="10.0.15" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.15" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="11.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="11.0.0" />
+		<PackageReference Include="Microsoft.Extensions.DependencyModel" Version="11.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Console" Version="11.0.0" />
+	</ItemGroup>
 	<ItemGroup>
+		<PackageReference Include="AutoMapper" Version="14.0.0" />
 		<PackageReference Include="Krosoft.Extensions.Core" Version="2026.11.16.13768" />
 		<PackageReference Include="LinqKit.Core" Version="1.3.2" />
 	</ItemGroup>
