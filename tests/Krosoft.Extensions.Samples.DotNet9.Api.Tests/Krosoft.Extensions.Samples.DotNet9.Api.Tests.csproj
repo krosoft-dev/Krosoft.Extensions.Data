@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<ItemGroup>
-		<PackageReference Include="Krosoft.Extensions.Testing.Cqrs" Version="2026.11.21.14221" />
-		<PackageReference Include="Krosoft.Extensions.Testing.Data.EntityFramework" Version="2026.11.21.14221" />
+		<PackageReference Include="Krosoft.Extensions.Testing.Cqrs" Version="2026.11.28.14335" />
+		<PackageReference Include="Krosoft.Extensions.Testing.Data.EntityFramework" Version="2026.11.28.14335" />
 		<PackageReference Include="Krosoft.Extensions.Testing.WebApi" Version="2026.11.21.14221" />
 		<PackageReference Include="Krosoft.Extensions.Testing" Version="2026.11.21.14221" />
 	</ItemGroup>
