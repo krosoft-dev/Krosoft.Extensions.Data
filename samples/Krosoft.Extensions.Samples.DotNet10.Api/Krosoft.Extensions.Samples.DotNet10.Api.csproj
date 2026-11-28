@@ -8,16 +8,16 @@
 		<DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
 	</PropertyGroup>
 	<ItemGroup>
-		<PackageReference Include="Krosoft.Extensions.Cqrs" Version="2026.11.18.14105" />
-		<PackageReference Include="Krosoft.Extensions.Cqrs.Behaviors" Version="2026.11.18.14105" />
-		<PackageReference Include="Krosoft.Extensions.Cqrs.Behaviors.Validations" Version="2026.11.18.14105" />
-		<PackageReference Include="Krosoft.Extensions.Mapping" Version="2026.11.16.13871" />
+		<PackageReference Include="Krosoft.Extensions.Cqrs" Version="2026.11.28.14314" />
+		<PackageReference Include="Krosoft.Extensions.Cqrs.Behaviors" Version="2026.11.28.14314" />
+		<PackageReference Include="Krosoft.Extensions.Cqrs.Behaviors.Validations" Version="2026.11.28.14314" />
+		<PackageReference Include="Krosoft.Extensions.Mapping" Version="2026.11.28.14326" />
 		<PackageReference Include="Krosoft.Extensions.Options" Version="2026.11.17.13919" />
-		<PackageReference Include="Krosoft.Extensions.WebApi" Version="2026.11.17.13978" /> 
-		<PackageReference Include="Krosoft.Extensions.WebApi.Identity" Version="2026.11.17.13978" />
-		<PackageReference Include="Krosoft.Extensions.WebApi.Swagger" Version="2026.11.17.13978" />
-		<PackageReference Include="Krosoft.Extensions.WebApi.Swagger.HealthChecks" Version="2026.11.17.13978" />
-		<PackageReference Include="Krosoft.Extensions.WebApi.HealthChecks" Version="2026.11.17.13978" />
+		<PackageReference Include="Krosoft.Extensions.WebApi" Version="2026.11.28.14297" /> 
+		<PackageReference Include="Krosoft.Extensions.WebApi.Identity" Version="2026.11.28.14297" />
+		<PackageReference Include="Krosoft.Extensions.WebApi.Swagger" Version="2026.11.28.14297" />
+		<PackageReference Include="Krosoft.Extensions.WebApi.Swagger.HealthChecks" Version="2026.11.28.14297" />
+		<PackageReference Include="Krosoft.Extensions.WebApi.HealthChecks" Version="2026.11.28.14297" />
 		<PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore" Version="10.0.15" />
 		<!-- Remplace la version vulnérable de System.Security.Cryptography.Pkcs tirée par les dépendances transitives (GHSA-2fmv-rv2c-59x7, GHSA-846f-f764-76mx) -->
 		<PackageReference Include="System.Security.Cryptography.Pkcs" Version="10.0.15" />
